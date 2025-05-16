@@ -16,7 +16,7 @@ FinalidadDelVuelo.init(
     sequelize,
     underscored: true,
     timestamps: false,
-    modelName: "finalidad_del_vuelo",
+    modelName: "finalidad_del_vuelos",
   }
 );
 

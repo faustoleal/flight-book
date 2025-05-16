@@ -1,6 +1,6 @@
 const { Model, DataTypes } = require("sequelize");
 
-const sequelize = require("../utils/db");
+const { sequelize } = require("../utils/db");
 
 class HorasDeVuelo extends Model {}
 
@@ -10,14 +10,6 @@ HorasDeVuelo.init(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
-    },
-    dia: {
-      type: DataTypes.DATE,
-      allowNull: false,
-    },
-    hora_de_salida: {
-      type: DataTypes.TIME,
-      allowNull: false,
     },
     desde: {
       type: DataTypes.STRING(4),
@@ -29,49 +21,45 @@ HorasDeVuelo.init(
       allowNull: false,
       references: { model: "aerodromos", key: "aerodromo" },
     },
-    hora_de_llegada: {
-      type: DataTypes.TIME,
-      allowNull: false,
-    },
     finalidad: {
       type: DataTypes.STRING(10),
       allowNull: false,
-      references: { model: "finalidad_del_vuelo", key: "finalidad" },
+      references: { model: "finalidad_del_vuelos", key: "finalidad" },
     },
-    avion: {
+    avionMatricula: {
       type: DataTypes.CHAR(6),
       allowNull: false,
       references: { model: "aviones", key: "matricula" },
     },
-    local_dia_p: {
+    localDiaP: {
       type: DataTypes.FLOAT,
       defaultValue: 0,
     },
-    local_dia_c: {
+    localDiaC: {
       type: DataTypes.FLOAT,
       defaultValue: 0,
     },
-    local_noche_p: {
+    localNocheP: {
       type: DataTypes.FLOAT,
       defaultValue: 0,
     },
-    local_noche_c: {
+    localNocheC: {
       type: DataTypes.FLOAT,
       defaultValue: 0,
     },
-    travesia_dia_p: {
+    travesiaDiaP: {
       type: DataTypes.FLOAT,
       defaultValue: 0,
     },
-    travesia_dia_c: {
+    travesiaDiaC: {
       type: DataTypes.FLOAT,
       defaultValue: 0,
     },
-    travesia_noche_p: {
+    travesiaNocheP: {
       type: DataTypes.FLOAT,
       defaultValue: 0,
     },
-    travesia_noche_c: {
+    travesiaNocheC: {
       type: DataTypes.FLOAT,
       defaultValue: 0,
     },
@@ -79,7 +67,7 @@ HorasDeVuelo.init(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    instructor_de_vuelo: {
+    instructorDeVuelo: {
       type: DataTypes.FLOAT,
       defaultValue: 0,
     },
@@ -87,11 +75,11 @@ HorasDeVuelo.init(
       type: DataTypes.FLOAT,
       defaultValue: 0,
     },
-    multi_motor: {
+    multiMotor: {
       type: DataTypes.FLOAT,
       defaultValue: 0,
     },
-    turbo_helice: {
+    turboHelice: {
       type: DataTypes.FLOAT,
       defaultValue: 0,
     },
@@ -99,11 +87,11 @@ HorasDeVuelo.init(
       type: DataTypes.FLOAT,
       defaultValue: 0,
     },
-    instrumentos_real_p: {
+    instrumentosRealP: {
       type: DataTypes.FLOAT,
       defaultValue: 0,
     },
-    instrumentos_real_c: {
+    instrumentosRealC: {
       type: DataTypes.FLOAT,
       defaultValue: 0,
     },
@@ -116,7 +104,7 @@ HorasDeVuelo.init(
     sequelize,
     underscored: true,
     timestamps: false,
-    modelName: "horas_de_vuelo",
+    modelName: "horas_de_vuelos",
   }
 );
 

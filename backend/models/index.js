@@ -8,19 +8,19 @@ const Aerodromos = require("./aerodromos");
 Pilotos.hasMany(HorasDeVuelo);
 HorasDeVuelo.belongsTo(Pilotos);
 
-HorasDeVuelo.hasMany(Aerdromos);
-Aerodromos.belongsTo(HorasDeVuelo);
+HorasDeVuelo.belongsTo(Aviones, { as: "avion" });
+Aviones.hasOne(HorasDeVuelo, { as: "avion" });
 
-HorasDeVuelo.hasOne(Aviones);
-Aviones.belongsTo(HorasDeVuelo);
-
-HorasDeVuelo.hasOne(FinalidadDelVuelo);
-FinalidadDelVuelo.belongsTo(HorasDeVuelo);
+Pilotos.sync({ alter: true });
+Aviones.sync({ alter: true });
+Aerodromos.sync({ alter: true });
+FinalidadDelVuelo.sync({ alter: true });
+HorasDeVuelo.sync({ alter: true });
 
 module.exports = {
   Pilotos,
   Aviones,
-  Aerdromos,
+  Aerodromos,
   FinalidadDelVuelo,
   HorasDeVuelo,
 };
