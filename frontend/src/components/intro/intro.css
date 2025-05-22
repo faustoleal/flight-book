@@ -1,0 +1,35 @@
+.intro {
+  height: 100vh;
+  width: 100vw;
+  background-color: #79c7c5;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation-name: show;
+  animation-timing-function: ease-out;
+  animation-duration: 3s;
+}
+
+.intro-title {
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px;
+}
+
+.title {
+  margin: 10px;
+}
+
+@keyframes show {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
