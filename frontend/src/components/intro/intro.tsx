@@ -7,7 +7,7 @@ const Intro = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       setIsVisible(false);
-    }, 30000);
+    }, 3000);
 
     return () => {
       clearTimeout(timeout);
