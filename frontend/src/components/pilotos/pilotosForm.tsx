@@ -6,7 +6,7 @@ import {
   Container,
   Nav,
 } from "react-bootstrap";
-import "./pilotosForm.css";
+import "./pilotos.css";
 
 const PilotosForm = () => {
   return (

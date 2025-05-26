@@ -6,13 +6,22 @@
   align-items: center;
 }
 
+.account {
+  height: inherit;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .form {
+  height: auto;
+  min-height: 50vh;
+  max-width: 90%;
   display: flex;
   background-color: #fff;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  height: 50vh;
   padding: 20px 10px;
   border-radius: 10px;
   border: 1px solid #e6e6e6;
@@ -21,7 +30,7 @@
 
 h2 {
   width: 100%;
-  margin: 20px 0 0 0;
+  margin: 20px 0;
 }
 
 .navbar {
