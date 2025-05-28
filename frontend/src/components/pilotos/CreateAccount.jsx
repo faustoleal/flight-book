@@ -1,4 +1,5 @@
 import { Form, Button, FloatingLabel } from "react-bootstrap";
+import "./pilotos.css";
 
 const CreateAccount = () => {
   return (

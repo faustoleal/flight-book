@@ -1,5 +1,5 @@
 .intro {
-  height: 100vh;
+  min-height: inherit;
   width: 100vw;
   background-color: #01d8d1;
   padding: 0;
