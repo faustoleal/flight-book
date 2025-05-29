@@ -7,22 +7,42 @@ import {
   Nav,
 } from "react-bootstrap";
 import "./pilotos.css";
+import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { newLogin } from "../../reducers/loginReducer";
 
 const PilotosForm = () => {
+  const [usuario, setUsuario] = useState("");
+  const [password, setPassword] = useState("");
+
+  const dispatch = useDispatch();
+
+  const handleLogin = (e) => {
+    e.preventDefault();
+    dispatch(newLogin({ usuario, password }));
+    setPassword("");
+    setUsuario("");
+  };
   return (
     <section className="pilotos">
       <Navbar className="navbar" fixed="top">
         <Container fluid className="nav-content">
           <Navbar.Brand style={{ color: "#01D8D1" }}>Flight Book</Navbar.Brand>
-          <Nav.Link>Create Account</Nav.Link>
+          <Nav.Link>CreateAccount</Nav.Link>
         </Container>
       </Navbar>
       <div className="form">
         <h2>Sign In</h2>
-        <Form className="w-100">
+        <Form className="w-100" onSubmit={handleLogin}>
           <Form.Group className="pt-4 px-2">
             <FloatingLabel controlId="name" label="Username" className="mb-3">
-              <Form.Control type="text" name="username" placeholder="name" />
+              <Form.Control
+                type="text"
+                name="username"
+                placeholder="name"
+                value={usuario}
+                onChange={({ target }) => setUsuario(target.value)}
+              />
             </FloatingLabel>
           </Form.Group>
           <Form.Group className="pt-4 px-2">
@@ -35,13 +55,15 @@ const PilotosForm = () => {
                 type="password"
                 name="password"
                 placeholder="password"
+                value={password}
+                onChange={({ target }) => setPassword(target.value)}
               />
             </FloatingLabel>
           </Form.Group>
+          <Button className="py-2 px-3" variant="primary" type="submit">
+            sign in
+          </Button>
         </Form>
-        <Button className="py-2 px-3" variant="primary" type="submit">
-          sign in
-        </Button>
       </div>
     </section>
   );
