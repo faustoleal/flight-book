@@ -11,6 +11,14 @@ HorasDeVuelo.init(
       primaryKey: true,
       autoIncrement: true,
     },
+    dia: {
+      type: DataTypes.DATEONLY,
+      allowNull: false,
+    },
+    horaSalida: {
+      type: DataTypes.TIME,
+      allowNull: false,
+    },
     desde: {
       type: DataTypes.STRING(4),
       allowNull: false,
@@ -20,6 +28,10 @@ HorasDeVuelo.init(
       type: DataTypes.STRING(4),
       allowNull: false,
       references: { model: "aerodromos", key: "aerodromo" },
+    },
+    horaLlegada: {
+      type: DataTypes.TIME,
+      allowNull: false,
     },
     finalidad: {
       type: DataTypes.STRING(10),
