@@ -1,9 +1,11 @@
 const pilotosRouter = require("express").Router();
+const bcrypt = require("bcrypt");
 
 const { Pilotos, HorasDeVuelo, Aviones } = require("../models");
 
 pilotosRouter.get("/", async (req, res) => {
   const pilotos = await Pilotos.findAll({
+    attributes: { exclude: ["passwordHash"] },
     include: [
       {
         model: HorasDeVuelo,
@@ -18,11 +20,25 @@ pilotosRouter.get("/", async (req, res) => {
 });
 
 pilotosRouter.post("/", async (req, res) => {
+  const { name, usuario, password } = req.body;
+
+  if (!password) {
+    res.status(400).json({ error: "password is require" });
+  }
+
+  const saltRounds = 10;
+  const passwordHash = await bcrypt.hash(password, saltRounds);
+
   try {
-    const piloto = await Pilotos.create(req.body);
-    res.status(201).json(piloto);
+    const piloto = await Pilotos.create({
+      name,
+      usuario,
+      passwordHash,
+    });
+
+    res.json(piloto);
   } catch (error) {
-    res.json({ error: "something happend", error });
+    res.json(error);
   }
 });
 

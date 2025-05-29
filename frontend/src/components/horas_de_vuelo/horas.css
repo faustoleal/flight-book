@@ -22,17 +22,56 @@
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
 }
 
+& section {
+  padding: 10px;
+}
+
+h2 {
+  width: 100%;
+  margin: 20px 0;
+}
+
+/* section itinerario */
+
 .itinerario {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
+.itinerario-item {
+  flex-basis: 18%;
+}
+
+@media (width < 768px) {
+  .itinerario-item:first-child {
+    flex-basis: 100%;
+  }
+
+  .itinerario-item {
+    flex-basis: 48%;
+  }
+}
+
+/* utils section */
+
 .utils {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
+
+& .utils-form-group {
+  flex-basis: 48%;
+}
+
+@media (width < 768px) {
+  .utils-form-group {
+    flex-basis: 100%;
+  }
+}
+
+/* section  tiempos-de-vuelo */
 
 .tiempos-de-vuelo {
   display: flex;
@@ -45,17 +84,45 @@
   max-height: 38px;
 }
 
+.tiempos-vuelo-item {
+  flex-basis: 100%;
+}
+
+@media (width > 370px) {
+  .tiempos-vuelo-item:first-child {
+    flex-basis: 80%;
+  }
+
+  .tiempos-vuelo-item:last-child {
+    flex-basis: 15%;
+  }
+}
+
+/* section discriminacion-tiempos */
+
 .discriminacion-tiempos {
   display: flex;
   flex-wrap: wrap;
 }
 
+& h2 {
+  margin: 20px;
+}
+
 & .input-group {
-  margin: 10px !important;
+  margin: 0px 5px;
+  flex-basis: 32%;
   width: auto;
 }
 
-h2 {
-  width: 100%;
-  margin: 20px 0;
+@media (width < 880px) {
+  & .input-group {
+    flex-basis: 48%;
+  }
+}
+
+@media (width < 620px) {
+  & .input-group {
+    flex-basis: 100%;
+  }
 }

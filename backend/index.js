@@ -12,6 +12,7 @@ const aerodromosRouter = require("./controllers/aerodromos");
 const finalidadRouter = require("./controllers/finalidad_del_vuelo");
 const pilotosRouter = require("./controllers/pilotos");
 const horasDeVueloRouter = require("./controllers/horas_de_vuelo");
+const loginRouter = require("./controllers/login");
 
 app.use(cors());
 app.use(express.json());
@@ -21,6 +22,7 @@ app.use("/api/aerodromos", aerodromosRouter);
 app.use("/api/finalidad", finalidadRouter);
 app.use("/api/pilotos", pilotosRouter);
 app.use("/api/horas", horasDeVueloRouter);
+app.use("/api/login", loginRouter);
 
 const start = async () => {
   await connectToDatabase();

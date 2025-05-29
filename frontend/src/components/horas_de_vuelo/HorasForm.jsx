@@ -8,27 +8,27 @@ const HorasForm = () => {
         <h2>Nueva Hora</h2>
         <Form className="w-100 p-2">
           <section className="itinerario">
-            <Form.Group className="mb-3 col-12 col-md-2" controlId="dia">
+            <Form.Group className="mb-3 itinerario-item" controlId="dia">
               <Form.Label>Fecha</Form.Label>
               <Form.Control type="date" />
             </Form.Group>
             <Form.Group
-              className="mb-3 col-5 col-md-2"
+              className="mb-3 itinerario-item"
               controlId="hora_de_salida"
             >
               <Form.Label>Hora de Salida</Form.Label>
               <Form.Control type="time" />
             </Form.Group>
-            <Form.Group className="mb-3 col-5 col-md-2" controlId="desde">
+            <Form.Group className="mb-3 itinerario-item" controlId="desde">
               <Form.Label>Desde</Form.Label>
               <Form.Control type="text" />
             </Form.Group>
-            <Form.Group className="mb-3 col-5 col-md-2" controlId="hasta">
+            <Form.Group className="mb-3 itinerario-item" controlId="hasta">
               <Form.Label>Hasta</Form.Label>
               <Form.Control type="text" />
             </Form.Group>
             <Form.Group
-              className="mb-3 col-5 col-md-2"
+              className="mb-3 itinerario-item"
               controlId="hora_de_llegada"
             >
               <Form.Label>Hora de llegada</Form.Label>
@@ -36,7 +36,7 @@ const HorasForm = () => {
             </Form.Group>
           </section>
           <section className="utils">
-            <Form.Group className="mb-3 col-12 col-md-3" controlId="finalidad">
+            <Form.Group className="mb-3 utils-form-group" controlId="finalidad">
               <Form.Label>Finalidad del Vuelo</Form.Label>
               <Form.Select>
                 <option>Seleccionar finalidad</option>
@@ -45,7 +45,7 @@ const HorasForm = () => {
                 <option value="3">READP</option>
               </Form.Select>
             </Form.Group>
-            <Form.Group className="mb-3 col-12 col-md-8" controlId="avion">
+            <Form.Group className="mb-3 utils-form-group" controlId="avion">
               <Form.Label>Avion</Form.Label>
               <div className="align-container d-flex">
                 <Form.Select>
@@ -59,7 +59,7 @@ const HorasForm = () => {
           </section>
           <section className="tiempos-de-vuelo">
             <Form.Group
-              className="mb-3  col-12 col-md-8"
+              className="mb-3 tiempos-vuelo-item"
               controlId="tiempos_de_vuelo"
             >
               <Form.Label>Tiempos de Vuelo</Form.Label>
@@ -75,61 +75,52 @@ const HorasForm = () => {
                 <option value="8">travesia noche copiloto</option>
               </Form.Select>
             </Form.Group>
-            <Form.Group className="mb-3  col-12 col-md-3" controlId="tiempo">
+            <Form.Group className="mb-3  tiempos-vuelo-item" controlId="tiempo">
               <Form.Label>Tiempo</Form.Label>
               <Form.Control type="number" />
             </Form.Group>
           </section>
           <section className="discriminacion-tiempos">
             <h2>Discriminacion Tiempos</h2>
-            <div className="size-witdh col-12 col-md-5 col-lg-4">
-              <InputGroup className="mb-3">
-                <InputGroup.Text>instructor de vuelo</InputGroup.Text>
-                <Form.Control type="number" />
-              </InputGroup>
-            </div>
-            <div className="size-witdh col-12 col-md-5 col-lg-4">
-              <InputGroup className="mb-3">
-                <InputGroup.Text>multi-motor</InputGroup.Text>
-                <Form.Control type="number" />
-              </InputGroup>
-            </div>
-            <div className="size-witdh col-12 col-md-5 col-lg-3">
-              <InputGroup className="mb-3">
-                <InputGroup.Text>reactor</InputGroup.Text>
-                <Form.Control type="number" />
-              </InputGroup>
-            </div>
-            <div className="size-witdh col-12 col-md-5 col-lg-4">
-              <InputGroup className="mb-3">
-                <InputGroup.Text>turbo-helice</InputGroup.Text>
-                <Form.Control type="number" />
-              </InputGroup>
-            </div>
-            <div className="size-witdh col-12 col-md-5 col-lg-4">
-              <InputGroup className="mb-3">
-                <InputGroup.Text>aeroaplicador</InputGroup.Text>
-                <Form.Control type="number" />
-              </InputGroup>
-            </div>
-            <div className="size-witdh col-12 col-md-5 col-lg-3">
-              <InputGroup className="mb-3">
-                <InputGroup.Text>instrumentos piloto</InputGroup.Text>
-                <Form.Control type="number" />
-              </InputGroup>
-            </div>
-            <div className="size-witdh col-12 col-md-5 col-lg-4">
-              <InputGroup className="mb-3">
-                <InputGroup.Text>instrumentos copiloto</InputGroup.Text>
-                <Form.Control type="number" />
-              </InputGroup>
-            </div>
-            <div className="size-witdh col-12 col-md-5 col-lg-4">
-              <InputGroup className="mb-3">
-                <InputGroup.Text>capota</InputGroup.Text>
-                <Form.Control type="number" />
-              </InputGroup>
-            </div>
+            <InputGroup className="mb-3">
+              <InputGroup.Text>instructor de vuelo</InputGroup.Text>
+              <Form.Control type="number" />
+            </InputGroup>
+
+            <InputGroup className="mb-3">
+              <InputGroup.Text>multi-motor</InputGroup.Text>
+              <Form.Control type="number" />
+            </InputGroup>
+
+            <InputGroup className="mb-3">
+              <InputGroup.Text>reactor</InputGroup.Text>
+              <Form.Control type="number" />
+            </InputGroup>
+
+            <InputGroup className="mb-3">
+              <InputGroup.Text>turbo-helice</InputGroup.Text>
+              <Form.Control type="number" />
+            </InputGroup>
+
+            <InputGroup className="mb-3">
+              <InputGroup.Text>aeroaplicador</InputGroup.Text>
+              <Form.Control type="number" />
+            </InputGroup>
+
+            <InputGroup className="mb-3">
+              <InputGroup.Text>instrumentos piloto</InputGroup.Text>
+              <Form.Control type="number" />
+            </InputGroup>
+
+            <InputGroup className="mb-3">
+              <InputGroup.Text>instrumentos copiloto</InputGroup.Text>
+              <Form.Control type="number" />
+            </InputGroup>
+
+            <InputGroup className="mb-3">
+              <InputGroup.Text>capota</InputGroup.Text>
+              <Form.Control type="number" />
+            </InputGroup>
           </section>
         </Form>
       </div>

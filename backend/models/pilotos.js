@@ -19,6 +19,11 @@ Pilotos.init(
       type: DataTypes.STRING(50),
       allowNull: false,
     },
+    passwordHash: {
+      type: DataTypes.STRING(255),
+      allowNull: false,
+      unique: true,
+    },
   },
   {
     sequelize,
