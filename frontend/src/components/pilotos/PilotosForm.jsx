@@ -4,7 +4,6 @@ import {
   FloatingLabel,
   Navbar,
   Container,
-  Nav,
 } from "react-bootstrap";
 import "./pilotos.css";
 import { useState } from "react";
@@ -28,13 +27,12 @@ const PilotosForm = () => {
       <Navbar className="navbar" fixed="top">
         <Container fluid className="nav-content">
           <Navbar.Brand style={{ color: "#01D8D1" }}>Flight Book</Navbar.Brand>
-          <Nav.Link>CreateAccount</Nav.Link>
         </Container>
       </Navbar>
       <div className="form">
         <h2>Sign In</h2>
-        <Form className="w-100" onSubmit={handleLogin}>
-          <Form.Group className="pt-4 px-2">
+        <Form className="w-100 pilotos-form" onSubmit={handleLogin}>
+          <Form.Group className="pt-4 px-2 w-100">
             <FloatingLabel controlId="name" label="Username" className="mb-3">
               <Form.Control
                 type="text"
@@ -45,7 +43,7 @@ const PilotosForm = () => {
               />
             </FloatingLabel>
           </Form.Group>
-          <Form.Group className="pt-4 px-2">
+          <Form.Group className="pt-4 px-2 w-100">
             <FloatingLabel
               controlId="password"
               label="Password"
@@ -60,8 +58,13 @@ const PilotosForm = () => {
               />
             </FloatingLabel>
           </Form.Group>
-          <Button className="py-2 px-3" variant="primary" type="submit">
-            sign in
+          <a href="">sign up</a>
+          <Button
+            className="py-2 px-3 my-2 w-30"
+            variant="primary"
+            type="submit"
+          >
+            Log in
           </Button>
         </Form>
       </div>

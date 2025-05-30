@@ -14,7 +14,7 @@ const loginSlice = createSlice({
 export const newLogin = (data) => {
   return async (dispatch) => {
     const user = await loginService.login(data);
-    window.localStorage.setItem("loggedBlogUser", JSON.stringify(user));
+    window.localStorage.setItem("loggedPiloto", JSON.stringify(user));
 
     dispatch(login(user));
   };
