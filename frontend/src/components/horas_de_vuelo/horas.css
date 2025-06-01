@@ -88,9 +88,13 @@ h2 {
   flex-basis: 100%;
 }
 
-@media (width > 370px) {
+@media (width > 475px) {
   .tiempos-vuelo-item:first-child {
-    flex-basis: 80%;
+    flex-basis: 60%;
+  }
+
+  .tiempos-vuelo-item:nth-child(2) {
+    flex-basis: 15%;
   }
 
   .tiempos-vuelo-item:last-child {
@@ -115,7 +119,7 @@ h2 {
   width: auto;
 }
 
-@media (width < 880px) {
+@media (width < 900px) {
   & .input-group {
     flex-basis: 48%;
   }
