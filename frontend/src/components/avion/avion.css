@@ -1,4 +1,4 @@
-.aerodromos {
+.avion {
   min-height: inherit;
   display: flex;
   justify-content: center;
@@ -25,18 +25,18 @@ h2 {
   margin: 20px 0;
 }
 
-.aerodromo-form {
+.avion-form {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.aerodromo-item {
+.avion-item {
   flex-basis: 48%;
 }
 
 @media (width < 350px) {
-  .aerodromo-item {
+  .avion-item {
     flex-basis: 100%;
   }
 }
