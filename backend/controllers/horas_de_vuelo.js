@@ -1,27 +1,31 @@
 const horasDeVueloRouter = require("express").Router();
 
-const {
-  HorasDeVuelo,
-  FinalidadDelVuelo,
-  Pilotos,
-  Aerodromos,
-  Aviones,
-} = require("../models");
+const { HorasDeVuelo, Pilotos, Aviones } = require("../models");
 
 horasDeVueloRouter.get("/", async (req, res) => {
+  const { page, size } = req.query;
+  let where = {};
+  if (req.query.where) {
+    where = {
+      pilotoId: req.query.where,
+    };
+  }
+
   const horas = await HorasDeVuelo.findAll({
     attributes: {
       exclude: ["pilotoId", "avionMatricula"],
     },
+    where,
+    limit: size,
+    offset: page * size,
     include: [
       {
         model: Pilotos,
-        attributes: { exclude: ["usuario", "id"] },
+        attributes: { exclude: ["usuario", "passwordHash"] },
       },
       {
         model: Aviones,
         as: "avion",
-        attributes: ["matricula", "modelo", "potencia", "clase"],
       },
     ],
   });

@@ -6,15 +6,6 @@ const { Pilotos, HorasDeVuelo, Aviones } = require("../models");
 pilotosRouter.get("/", async (req, res) => {
   const pilotos = await Pilotos.findAll({
     attributes: { exclude: ["passwordHash"] },
-    include: [
-      {
-        model: HorasDeVuelo,
-        include: {
-          model: Aviones,
-          as: "avion",
-        },
-      },
-    ],
   });
   res.json(pilotos);
 });
