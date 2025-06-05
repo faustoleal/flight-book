@@ -1,6 +1,6 @@
 const horasDeVueloRouter = require("express").Router();
-
 const { HorasDeVuelo, Pilotos, Aviones } = require("../models");
+const middelware = require("../utils/middelware");
 
 horasDeVueloRouter.get("/", async (req, res) => {
   const horas = await HorasDeVuelo.findAll({
@@ -22,9 +22,12 @@ horasDeVueloRouter.get("/", async (req, res) => {
   res.json(horas);
 });
 
-horasDeVueloRouter.post("/", async (req, res) => {
+horasDeVueloRouter.post("/", middelware.pilotoExtractor, async (req, res) => {
   try {
-    const hora = await HorasDeVuelo.create(req.body);
+    const hora = await HorasDeVuelo.create({
+      ...req.body,
+      pilotoId: req.piloto.id,
+    });
     res.json(hora);
   } catch (error) {
     res.json({ error: "error", error });

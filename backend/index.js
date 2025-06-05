@@ -18,6 +18,8 @@ const routers = {
 app.use(cors());
 app.use(express.json());
 
+app.use(middelware.tokenExtractor);
+
 app.use("/api/aviones", routers.aviones);
 app.use("/api/aerodromos", routers.aerodromos);
 app.use("/api/pilotos", routers.pilotos);

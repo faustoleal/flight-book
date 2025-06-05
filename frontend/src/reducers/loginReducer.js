@@ -1,24 +1,51 @@
 import { createSlice } from "@reduxjs/toolkit";
 import loginService from "../services/login";
+import horasService from "../services/horas";
 
 const loginSlice = createSlice({
   name: "login",
   initialState: null,
   reducers: {
+    initPiloto(state, action) {
+      return action.payload;
+    },
     login(state, action) {
+      return action.payload;
+    },
+    logout(state, action) {
       return action.payload;
     },
   },
 });
 
-export const newLogin = (data) => {
+export const initializeLogin = () => {
+  return async (dispatch) => {
+    const loggedUserJSON = window.localStorage.getItem("loggedPiloto");
+    if (loggedUserJSON) {
+      const user = JSON.parse(loggedUserJSON);
+      dispatch(initPiloto(user));
+    } else {
+      dispatch(initPiloto(null));
+    }
+  };
+};
+
+export const loginPiloto = (data) => {
   return async (dispatch) => {
     const user = await loginService.login(data);
     window.localStorage.setItem("loggedPiloto", JSON.stringify(user));
-
+    horasService.setToken(user.token);
     dispatch(login(user));
   };
 };
 
-export const { login } = loginSlice.actions;
+export const logoutPiloto = () => {
+  return (dispatch) => {
+    window.localStorage.removeItem("loggedPiloto");
+    horasService.setToken(null);
+    dispatch(logout(null));
+  };
+};
+
+export const { login, initPiloto, logout } = loginSlice.actions;
 export default loginSlice.reducer;

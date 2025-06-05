@@ -8,7 +8,7 @@ import {
 import "./pilotos.css";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { newLogin } from "../../reducers/loginReducer";
+import { loginPiloto } from "../../reducers/loginReducer";
 
 const PilotosForm = () => {
   const [usuario, setUsuario] = useState("");
@@ -18,7 +18,7 @@ const PilotosForm = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    dispatch(newLogin({ usuario, password }));
+    dispatch(loginPiloto({ usuario, password }));
     setPassword("");
     setUsuario("");
   };

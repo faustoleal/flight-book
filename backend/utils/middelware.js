@@ -1,4 +1,6 @@
+const { Pilotos } = require("../models");
 const { SECRET } = require("./config");
+const jwt = require("jsonwebtoken");
 
 const unknownEndpoint = (req, res) => {
   res.status(404).send({ error: "unknown endpoint" });
@@ -7,20 +9,26 @@ const unknownEndpoint = (req, res) => {
 const tokenExtractor = async (request, response, next) => {
   const authorization = request.get("authorization");
   if (authorization && authorization.startsWith("Bearer")) {
-    try {
-      const token = authorization.substring(7);
-
-      request.decodedToken = jwt.verify(token, SECRET);
-    } catch (error) {
-      response.status(401).json({ error: "invalid token" });
-    }
+    request.token = authorization.substring(7);
   } else {
-    response.json({ error: "missing token" });
+    request.token = null;
   }
 
   next();
 };
 
+const pilotoExtractor = async (request, response, next) => {
+  if (!request.token) {
+    return response.status(401).json({ error: "missing token" });
+  } else {
+    const decodedToken = jwt.verify(request.token, process.env.SECRET);
+    request.piloto = await Pilotos.findByPk(decodedToken.id);
+  }
+  next();
+};
+
 module.exports = {
   unknownEndpoint,
+  pilotoExtractor,
+  tokenExtractor,
 };
