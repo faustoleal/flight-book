@@ -23,7 +23,7 @@ export const initializeAviones = () => {
 
 export const createAvion = (avion) => {
   return async (dispatch) => {
-    const newAvion = avionService.create(avion);
+    const newAvion = await avionService.create(avion);
     dispatch(appendAvion(newAvion));
   };
 };
