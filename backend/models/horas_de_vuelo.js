@@ -34,9 +34,8 @@ HorasDeVuelo.init(
       allowNull: false,
     },
     finalidad: {
-      type: DataTypes.STRING(10),
+      type: DataTypes.ENUM("ENT", "INST", "READP"),
       allowNull: false,
-      references: { model: "finalidad_del_vuelos", key: "finalidad" },
     },
     avionMatricula: {
       type: DataTypes.CHAR(6),

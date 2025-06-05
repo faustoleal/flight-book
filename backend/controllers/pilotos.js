@@ -27,7 +27,7 @@ pilotosRouter.post("/", async (req, res) => {
       passwordHash,
     });
 
-    res.json(piloto);
+    res.json("usuario creado correctamente");
   } catch (error) {
     res.json(error);
   }
