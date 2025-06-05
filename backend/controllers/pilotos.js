@@ -1,7 +1,7 @@
 const pilotosRouter = require("express").Router();
 const bcrypt = require("bcrypt");
 
-const { Pilotos, HorasDeVuelo, Aviones } = require("../models");
+const { Pilotos } = require("../models");
 
 pilotosRouter.get("/", async (req, res) => {
   const pilotos = await Pilotos.findAll({

@@ -20,9 +20,9 @@ const loginSlice = createSlice({
 
 export const initializeLogin = () => {
   return async (dispatch) => {
-    const loggedUserJSON = window.localStorage.getItem("loggedPiloto");
-    if (loggedUserJSON) {
-      const user = JSON.parse(loggedUserJSON);
+    const loggedPilotoJSON = window.localStorage.getItem("loggedPiloto");
+    if (loggedPilotoJSON) {
+      const user = JSON.parse(loggedPilotoJSON);
       dispatch(initPiloto(user));
     } else {
       dispatch(initPiloto(null));
@@ -32,10 +32,10 @@ export const initializeLogin = () => {
 
 export const loginPiloto = (data) => {
   return async (dispatch) => {
-    const user = await loginService.login(data);
-    window.localStorage.setItem("loggedPiloto", JSON.stringify(user));
-    horasService.setToken(user.token);
-    dispatch(login(user));
+    const piloto = await loginService.login(data);
+    window.localStorage.setItem("loggedPiloto", JSON.stringify(piloto));
+    horasService.setToken(piloto.token);
+    dispatch(login(piloto));
   };
 };
 

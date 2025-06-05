@@ -6,8 +6,13 @@ const { SECRET } = require("../utils/config");
 
 loginRouter.post("/", async (request, response) => {
   const { usuario, password } = request.body;
+  console.log(request.body);
 
-  const piloto = await Pilotos.findOne({ usuario });
+  const piloto = await Pilotos.findOne({
+    where: {
+      usuario: usuario,
+    },
+  });
 
   const passwordCorrect =
     piloto === null

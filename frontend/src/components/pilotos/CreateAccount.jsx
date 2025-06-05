@@ -24,7 +24,7 @@ const CreateAccount = () => {
       <div className="form">
         <h2>Create Account</h2>
         <Form className="w-100 p-2" onSubmit={handleCreatePiloto}>
-          <Form.Group className="py-4 px-2">
+          <Form.Group className="p-2">
             <FloatingLabel controlId="name" label="Full name" className="mb-3">
               <Form.Control
                 type="text"
@@ -35,7 +35,7 @@ const CreateAccount = () => {
               />
             </FloatingLabel>
           </Form.Group>
-          <Form.Group className="py-4 px-2">
+          <Form.Group className="p-2">
             <FloatingLabel
               controlId="username"
               label="Username"
@@ -50,7 +50,7 @@ const CreateAccount = () => {
               />
             </FloatingLabel>
           </Form.Group>
-          <Form.Group className="py-4 px-2">
+          <Form.Group className="p-2">
             <FloatingLabel
               controlId="Password"
               label="Password"
@@ -65,7 +65,7 @@ const CreateAccount = () => {
               />
             </FloatingLabel>
           </Form.Group>
-          <Button className="py-2 px-3 my-3" variant="primary" type="submit">
+          <Button className="py-2 px-3 my-2" variant="primary" type="submit">
             create
           </Button>
         </Form>

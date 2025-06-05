@@ -9,7 +9,7 @@ const pilotoSlice = createSlice({
       return action.payload;
     },
     appendPiloto(state, action) {
-      return state.push(action.payload);
+      state.push(action.payload);
     },
   },
 });

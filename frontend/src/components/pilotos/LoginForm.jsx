@@ -1,16 +1,10 @@
-import {
-  Form,
-  Button,
-  FloatingLabel,
-  Navbar,
-  Container,
-} from "react-bootstrap";
-import "./pilotos.css";
-import { useState } from "react";
+import { Form, Button, FloatingLabel } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { loginPiloto } from "../../reducers/loginReducer";
+import "./pilotos.css";
+import { useState } from "react";
 
-const PilotosForm = () => {
+const LoginForm = () => {
   const [usuario, setUsuario] = useState("");
   const [password, setPassword] = useState("");
 
@@ -22,13 +16,9 @@ const PilotosForm = () => {
     setPassword("");
     setUsuario("");
   };
+
   return (
     <section className="pilotos">
-      <Navbar className="navbar" fixed="top">
-        <Container fluid className="nav-content">
-          <Navbar.Brand style={{ color: "#01D8D1" }}>Flight Book</Navbar.Brand>
-        </Container>
-      </Navbar>
       <div className="form">
         <h2>Sign In</h2>
         <Form className="w-100 pilotos-form" onSubmit={handleLogin}>
@@ -58,7 +48,7 @@ const PilotosForm = () => {
               />
             </FloatingLabel>
           </Form.Group>
-          <a href="">sign up</a>
+          <a>sing in</a>
           <Button
             className="py-2 px-3 my-2 w-30"
             variant="primary"
@@ -72,4 +62,4 @@ const PilotosForm = () => {
   );
 };
 
-export default PilotosForm;
+export default LoginForm;
