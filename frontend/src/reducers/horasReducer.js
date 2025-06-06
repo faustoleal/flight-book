@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import horasService from "../services/horas";
 
 const horasSlice = createSlice({
-  name: "HorasDeVuelo",
+  name: "horas",
   initialState: [],
   reducers: {
     appendHoras(state, action) {
@@ -16,14 +16,14 @@ const horasSlice = createSlice({
 
 export const initializeHoras = () => {
   return async (dispatch) => {
-    const horas = horasService.getAll();
+    const horas = await horasService.getAll();
     dispatch(setHoras(horas));
   };
 };
 
 export const createHoras = (hora) => {
   return async (dispatch) => {
-    const newHora = horasService.create(hora);
+    const newHora = await horasService.create(hora);
     dispatch(appendHoras(newHora));
   };
 };
