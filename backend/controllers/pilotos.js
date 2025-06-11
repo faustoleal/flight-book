@@ -1,13 +1,20 @@
 const pilotosRouter = require("express").Router();
 const bcrypt = require("bcrypt");
 
-const { Pilotos } = require("../models");
+const { Pilotos, HorasDeVuelo } = require("../models");
 
 pilotosRouter.get("/", async (req, res) => {
-  const pilotos = await Pilotos.findAll({
-    attributes: { exclude: ["passwordHash"] },
-  });
-  res.json(pilotos);
+  try {
+    const pilotos = await Pilotos.findAll({
+      attributes: { exclude: ["passwordHash"] },
+      include: {
+        model: HorasDeVuelo,
+      },
+    });
+    res.json(pilotos);
+  } catch (error) {
+    res.json(error);
+  }
 });
 
 pilotosRouter.post("/", async (req, res) => {

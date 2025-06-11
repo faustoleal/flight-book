@@ -13,6 +13,11 @@ const getAll = async () => {
   return response.data;
 };
 
+const getTotales = async (id) => {
+  const response = await axios.get(`${baseUrl}/${id}/totales`);
+  return response.data;
+};
+
 const create = async (horas) => {
   const config = {
     headers: { Authorization: token },
@@ -21,4 +26,4 @@ const create = async (horas) => {
   return response.data;
 };
 
-export default { getAll, create, setToken };
+export default { getAll, create, setToken, getTotales };

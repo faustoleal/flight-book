@@ -1,5 +1,4 @@
 const HorasItem = ({ hora }) => {
-  console.log(hora);
   return (
     <tr>
       <td>{hora.dia}</td>
