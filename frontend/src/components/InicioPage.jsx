@@ -1,4 +1,4 @@
-import Ventana from "./Ventana";
+import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { initializeTotales } from "../reducers/totalesReducer";
@@ -6,13 +6,6 @@ import { initializeTotales } from "../reducers/totalesReducer";
 const InicioPage = ({ id, name }) => {
   const dispatch = useDispatch();
   const totales = useSelector((state) => state.totales);
-
-  const ventanasList = [
-    { content: "Ver Libro de Vuelo", path: "/libro-vuelo" },
-    { content: "Ver tus aviones", path: "/aviones" },
-    { content: "Anotar nueva hora", path: "/nueva-hora" },
-    { content: "Agregar nuevo avión", path: "/nuevo-avion" },
-  ];
 
   useEffect(() => {
     dispatch(initializeTotales(id));
@@ -71,9 +64,14 @@ const InicioPage = ({ id, name }) => {
         </section>
       )}
       <section className="links">
-        {ventanasList.map((ventana, index) => (
-          <Ventana key={index} ventana={ventana} />
-        ))}
+        <a href="/libro-vuelo" className="ventana">
+          <p style={{ alignSelf: "start" }}>Ver libro de Vuelo</p>
+          <ArrowForwardIcon style={{ alignSelf: "end" }} />
+        </a>
+        <a href="/libro-vuelo/agregar-hora" className="ventana">
+          <p style={{ alignSelf: "start" }}>Anotar nueva hora</p>
+          <ArrowForwardIcon style={{ alignSelf: "end" }} />
+        </a>
       </section>
     </div>
   );
