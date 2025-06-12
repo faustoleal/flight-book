@@ -1,7 +1,17 @@
 import { Table } from "react-bootstrap";
 import HorasItem from "./HorasItem";
+import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from "react";
+import { initializeHoras } from "../reducers/horasReducer";
 
-const HorasTable = ({ horas }) => {
+const HorasTable = ({ id }) => {
+  const dispatch = useDispatch();
+  const horas = useSelector((state) => state.horas);
+
+  useEffect(() => {
+    dispatch(initializeHoras(id));
+  }, [id, dispatch]);
+
   return (
     <Table striped bordered responsive>
       <thead>

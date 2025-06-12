@@ -14,9 +14,9 @@ const horasSlice = createSlice({
   },
 });
 
-export const initializeHoras = () => {
+export const initializeHoras = (id) => {
   return async (dispatch) => {
-    const horas = await horasService.getAll();
+    const horas = await horasService.getAll(id);
     dispatch(setHoras(horas));
   };
 };

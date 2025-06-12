@@ -1,8 +1,7 @@
 import { Form, Button, FloatingLabel } from "react-bootstrap";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createAvion } from "../../reducers/avionReducer";
-import "./avion.css";
+import { createAvion } from "../reducers/avionReducer";
 
 const AvionForm = () => {
   const [matricula, setMatricula] = useState("");

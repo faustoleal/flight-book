@@ -1,6 +1,7 @@
 import "./App.css";
-import LoginForm from "./components/pilotos/LoginForm";
-import CreateAccount from "./components/pilotos/CreateAccount";
+import LoginForm from "./components/LoginForm";
+import CreateAccount from "./components/CreateAccount";
+import HorasTable from "./components/HorasTable";
 import { Routes, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
@@ -22,9 +23,13 @@ function App() {
         <InicioAlert />
       ) : (
         <Routes>
-          <Route path="/" element={<InicioPage id={login.id} />} />
+          <Route
+            path="/"
+            element={<InicioPage id={login.id} name={login.name} />}
+          />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/create-account" element={<CreateAccount />} />
+          <Route path="/libro-vuelo" element={<HorasTable id={login.id} />} />
         </Routes>
       )}
     </>

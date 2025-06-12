@@ -3,10 +3,10 @@ const { HorasDeVuelo, Pilotos, Aviones } = require("../models");
 const { sequelize } = require("../utils/db");
 const middelware = require("../utils/middelware");
 
-horasDeVueloRouter.get("/id", async (req, res) => {
+horasDeVueloRouter.get("/:id", async (req, res) => {
   const horas = await HorasDeVuelo.findAll({
     where: {
-      pilotoId: req.params.pilotoId,
+      pilotoId: req.params.id,
     },
     exclude: ["avionMatricula"],
     include: [

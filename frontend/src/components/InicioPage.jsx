@@ -1,10 +1,18 @@
+import Ventana from "./Ventana";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { initializeTotales } from "../reducers/totalesReducer";
 
-const InicioPage = ({ id }) => {
+const InicioPage = ({ id, name }) => {
   const dispatch = useDispatch();
   const totales = useSelector((state) => state.totales);
+
+  const ventanasList = [
+    { content: "Ver Libro de Vuelo", path: "/libro-vuelo" },
+    { content: "Ver tus aviones", path: "/aviones" },
+    { content: "Anotar nueva hora", path: "/nueva-hora" },
+    { content: "Agregar nuevo avión", path: "/nuevo-avion" },
+  ];
 
   useEffect(() => {
     dispatch(initializeTotales(id));
@@ -12,6 +20,7 @@ const InicioPage = ({ id }) => {
 
   return (
     <div className="inicio-page">
+      <h1>Bienvenido {name}</h1>
       {totales.length !== 0 && (
         <section className="totales">
           <h2>Totales de Vuelo</h2>
@@ -61,6 +70,11 @@ const InicioPage = ({ id }) => {
           </div>
         </section>
       )}
+      <section className="links">
+        {ventanasList.map((ventana, index) => (
+          <Ventana key={index} ventana={ventana} />
+        ))}
+      </section>
     </div>
   );
 };

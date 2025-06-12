@@ -1,8 +1,7 @@
 import { Button, Form, InputGroup } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { createHoras } from "../../reducers/horasReducer";
+import { createHoras } from "../reducers/horasReducer";
 import { useEffect, useState } from "react";
-import "./horas.css";
 
 const HorasForm = () => {
   const [dia, setDia] = useState("");

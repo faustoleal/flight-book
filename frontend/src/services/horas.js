@@ -8,8 +8,8 @@ const setToken = (newToken) => {
   token = `Bearer ${newToken}`;
 };
 
-const getAll = async () => {
-  const response = await axios.get(baseUrl);
+const getAll = async (id) => {
+  const response = await axios.get(`${baseUrl}/${id}`);
   return response.data;
 };
 

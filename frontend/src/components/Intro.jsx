@@ -1,5 +1,4 @@
 import AutoStoriesIcon from "@mui/icons-material/AutoStories";
-import "./intro.css";
 import { useEffect, useState } from "react";
 
 const Intro = () => {

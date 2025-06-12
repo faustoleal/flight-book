@@ -1,8 +1,7 @@
 import { Form, Button, FloatingLabel } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { createPiloto } from "../../reducers/pilotoReducer";
+import { createPiloto } from "../reducers/pilotoReducer";
 import { useState } from "react";
-import "./pilotos.css";
 
 const CreateAccount = () => {
   const [name, setName] = useState("");
