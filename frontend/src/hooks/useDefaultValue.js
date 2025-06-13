@@ -7,10 +7,15 @@ const useDefaultValue = (type) => {
     setValue(e.target.value);
   };
 
+  const onReset = () => {
+    setValue("0");
+  };
+
   return {
     type,
     value,
     onChange,
+    onReset,
   };
 };
 

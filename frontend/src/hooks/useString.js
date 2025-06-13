@@ -6,10 +6,15 @@ const useString = (type) => {
     setValue(e.target.value);
   };
 
+  const onReset = () => {
+    setValue("");
+  };
+
   return {
     type,
     value,
     onChange,
+    onReset,
   };
 };
 

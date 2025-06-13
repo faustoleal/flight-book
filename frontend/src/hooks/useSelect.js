@@ -7,9 +7,14 @@ const useSelect = () => {
     setValue(e.target.value);
   };
 
+  const onReset = () => {
+    setValue("");
+  };
+
   return {
     value,
     onChange,
+    onReset,
   };
 };
 

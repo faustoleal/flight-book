@@ -8,15 +8,7 @@ import useDefaultValue from "../hooks/useDefaultValue";
 import DiscriminacionInput from "./DiscriminacionInput";
 
 const HorasForm = () => {
-  const dia = useString("date");
-  const horaSalida = useString("time");
-  const desde = useString("text");
-  const hasta = useString("text");
-  const horaLlegada = useString("time");
-  const finalidad = useSelect();
-  const avionMatricula = useSelect();
-  const [tiemposDeVuelo, setTiemposDeVuelo] = useState("");
-  const [tiempos, setTiempos] = useState({
+  const tiemposInitialState = {
     localDiaP: "0",
     localDiaC: "0",
     localNocheP: "0",
@@ -25,7 +17,17 @@ const HorasForm = () => {
     travesiaDiaC: "0",
     travesiaNocheP: "0",
     travesiaNocheC: "0",
-  });
+  };
+
+  const dia = useString("date");
+  const horaSalida = useString("time");
+  const desde = useString("text");
+  const hasta = useString("text");
+  const horaLlegada = useString("time");
+  const finalidad = useSelect();
+  const avionMatricula = useSelect();
+  const [tiemposDeVuelo, setTiemposDeVuelo] = useState("");
+  const [tiempos, setTiempos] = useState(tiemposInitialState);
   const [tiempo, setTiempo] = useState("0");
   const aterrizajes = useDefaultValue("0");
   const instructorDeVuelo = useDefaultValue("0");
@@ -75,6 +77,25 @@ const HorasForm = () => {
 
     dispatch(createHoras(newHora));
     console.log(newHora);
+    dia.onReset();
+    horaSalida.onReset();
+    desde.onReset();
+    hasta.onReset();
+    horaLlegada.onReset();
+    finalidad.onReset();
+    avionMatricula.onReset();
+    setTiempo("0");
+    setTiemposDeVuelo("");
+    setTiempos(tiemposInitialState);
+    aterrizajes.onReset();
+    instructorDeVuelo.onReset();
+    reactor.onReset();
+    turboHelice.onReset();
+    multiMotor.onReset();
+    aeroaplicador.onReset();
+    instrumentosRealP.onReset();
+    instrumentosRealC.onReset();
+    capota.onReset();
   };
 
   return (
