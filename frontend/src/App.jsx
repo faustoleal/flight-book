@@ -2,6 +2,7 @@ import "./App.css";
 import LoginForm from "./components/LoginForm";
 import CreateAccount from "./components/CreateAccount";
 import HorasTable from "./components/HorasTable";
+import HorasForm from "./components/HorasForm";
 import { Routes, Route } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
@@ -30,6 +31,7 @@ function App() {
           <Route path="/login" element={<LoginForm />} />
           <Route path="/create-account" element={<CreateAccount />} />
           <Route path="/libro-vuelo" element={<HorasTable id={login.id} />} />
+          <Route path="/libro-vuelo/agregar-hora" element={<HorasForm />} />
         </Routes>
       )}
     </>

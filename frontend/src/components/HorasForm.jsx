@@ -2,34 +2,37 @@ import { Button, Form, InputGroup } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { createHoras } from "../reducers/horasReducer";
 import { useEffect, useState } from "react";
+import useString from "../hooks/useString";
+import useSelect from "../hooks/useSelect";
+import useDefaultValue from "../hooks/useDefaultValue";
 
 const HorasForm = () => {
-  const [dia, setDia] = useState("");
-  const [horaSalida, setHoraSalida] = useState("");
-  const [desde, setDesde] = useState("");
-  const [hasta, setHasta] = useState("");
-  const [horaLlegada, setHoraLlegada] = useState("");
-  const [finalidad, setFinalidad] = useState("");
-  const [avionMatricula, setAvionMatricula] = useState("");
+  const dia = useString("date");
+  const horaSalida = useString("time");
+  const desde = useString("text");
+  const hasta = useString("text");
+  const horaLlegada = useString("time");
+  const finalidad = useSelect();
+  const avionMatricula = useSelect();
   const [tiemposDeVuelo, setTiemposDeVuelo] = useState("");
-  const [localDiaP, setLocalDiaP] = useState(0);
-  const [localDiaC, setLocalDiaC] = useState(0);
-  const [localNocheP, setLocalNocheP] = useState(0);
-  const [localNocheC, setLocalNocheC] = useState(0);
-  const [travesiaDiaP, setTravesiaDiaP] = useState(0);
-  const [travesiaDiaC, setTravesiaDiaC] = useState(0);
-  const [travesiaNocheP, setTravesiaNocheP] = useState(0);
-  const [travesiaNocheC, setTravesiaNocheC] = useState(0);
-  const [tiempo, setTiempo] = useState(0);
-  const [aterrizajes, setAterrizajes] = useState(0);
-  const [instructorDeVuelo, setInstructorDeVuelo] = useState(0);
-  const [reactor, setReactor] = useState(0);
-  const [multiMotor, setMultiMotor] = useState(0);
-  const [turboHelice, setTurboHelice] = useState(0);
-  const [aeroaplicador, setAeroaplicador] = useState(0);
-  const [instrumentosRealP, setInstrumentosRealP] = useState(0);
-  const [instrumentosRealC, setInstrumentosRealC] = useState(0);
-  const [capota, setCapota] = useState(0);
+  const [localDiaP, setLocalDiaP] = useState("0");
+  const [localDiaC, setLocalDiaC] = useState("0");
+  const [localNocheP, setLocalNocheP] = useState("0");
+  const [localNocheC, setLocalNocheC] = useState("0");
+  const [travesiaDiaP, setTravesiaDiaP] = useState("0");
+  const [travesiaDiaC, setTravesiaDiaC] = useState("0");
+  const [travesiaNocheP, setTravesiaNocheP] = useState("0");
+  const [travesiaNocheC, setTravesiaNocheC] = useState("0");
+  const [tiempo, setTiempo] = useState("0");
+  const aterrizajes = useDefaultValue("0");
+  const instructorDeVuelo = useDefaultValue("0");
+  const reactor = useDefaultValue("0");
+  const multiMotor = useDefaultValue("0");
+  const turboHelice = useDefaultValue("0");
+  const aeroaplicador = useDefaultValue("0");
+  const instrumentosRealP = useDefaultValue("0");
+  const instrumentosRealC = useDefaultValue("0");
+  const capota = useDefaultValue("0");
 
   const dispatch = useDispatch();
 
@@ -57,96 +60,73 @@ const HorasForm = () => {
     e.preventDefault();
 
     const newHora = {
-      dia: dia,
-      horaSalida: horaSalida,
-      desde: desde,
-      hasta: hasta,
-      horaLlegada: horaLlegada,
-      finalidad: finalidad,
-      avionMatricula: avionMatricula,
-      localDiaP: Number(localDiaP),
-      localDiaC: Number(localDiaC),
-      localNocheP: Number(localNocheP),
-      localNocheC: Number(localNocheC),
-      travesiaDiaP: Number(travesiaDiaP),
-      travesiaDiaC: Number(travesiaDiaC),
-      travesiaNocheP: Number(travesiaNocheP),
-      travesiaNocheC: Number(travesiaNocheC),
-      aterrizajes: Number(aterrizajes),
-      instructorDeVuelo: Number(instructorDeVuelo),
-      reactor: Number(reactor),
-      multiMotor: Number(multiMotor),
-      turboHelice: Number(turboHelice),
-      aeroaplicador: Number(aeroaplicador),
-      instrumentosRealC: Number(instrumentosRealC),
-      instrumentosRealP: Number(instrumentosRealP),
-      capota: Number(capota),
-      pilotoId: 1,
+      dia: dia.value,
+      horaSalida: horaSalida.value,
+      desde: desde.value,
+      hasta: hasta.value,
+      horaLlegada: horaLlegada.value,
+      finalidad: finalidad.value,
+      avionMatricula: avionMatricula.value,
+      localDiaP: parseFloat(localDiaP),
+      localDiaC: parseFloat(localDiaC),
+      localNocheP: parseFloat(localNocheP),
+      localNocheC: parseFloat(localNocheC),
+      travesiaDiaP: parseFloat(travesiaDiaP),
+      travesiaDiaC: parseFloat(travesiaDiaC),
+      travesiaNocheP: parseFloat(travesiaNocheP),
+      travesiaNocheC: parseFloat(travesiaNocheC),
+      aterrizajes: parseInt(aterrizajes.value),
+      instructorDeVuelo: parseFloat(instructorDeVuelo.value),
+      reactor: parseFloat(reactor.value),
+      multiMotor: parseFloat(multiMotor.value),
+      turboHelice: parseFloat(turboHelice.value),
+      aeroaplicador: parseFloat(aeroaplicador.value),
+      instrumentosRealC: parseFloat(instrumentosRealC.value),
+      instrumentosRealP: parseFloat(instrumentosRealP.value),
+      capota: parseFloat(capota.value),
     };
 
     dispatch(createHoras(newHora));
+    console.log(newHora);
   };
 
   return (
     <div className="horas">
       <div className="form">
         <h2>Nueva Hora</h2>
-        <Form className="w-100 p-2" onSubmit={handleCreateHora}>
+        <Form className="w-1'0''0' p-2" onSubmit={handleCreateHora}>
           <section className="itinerario">
             <Form.Group className="mb-3 itinerario-item" controlId="dia">
               <Form.Label>Fecha</Form.Label>
-              <Form.Control
-                type="date"
-                value={dia}
-                onChange={({ target }) => setDia(target.value)}
-              />
+              <Form.Control {...dia} />
             </Form.Group>
             <Form.Group
               className="mb-3 itinerario-item"
               controlId="hora_de_salida"
             >
               <Form.Label>Hora de Salida</Form.Label>
-              <Form.Control
-                type="time"
-                value={horaSalida}
-                onChange={({ target }) => setHoraSalida(target.value)}
-              />
+              <Form.Control {...horaSalida} />
             </Form.Group>
             <Form.Group className="mb-3 itinerario-item" controlId="desde">
               <Form.Label>Desde</Form.Label>
-              <Form.Control
-                type="text"
-                value={desde}
-                onChange={({ target }) => setDesde(target.value)}
-              />
+              <Form.Control {...desde} />
             </Form.Group>
             <Form.Group className="mb-3 itinerario-item" controlId="hasta">
               <Form.Label>Hasta</Form.Label>
-              <Form.Control
-                type="text"
-                value={hasta}
-                onChange={({ target }) => setHasta(target.value)}
-              />
+              <Form.Control {...hasta} />
             </Form.Group>
             <Form.Group
               className="mb-3 itinerario-item"
               controlId="hora_de_llegada"
             >
               <Form.Label>Hora de llegada</Form.Label>
-              <Form.Control
-                type="time"
-                value={horaLlegada}
-                onChange={({ target }) => setHoraLlegada(target.value)}
-              />
+              <Form.Control {...horaLlegada} />
             </Form.Group>
           </section>
           <section className="utils">
             <Form.Group className="mb-3 utils-form-group" controlId="finalidad">
               <Form.Label>Finalidad del Vuelo</Form.Label>
-              <Form.Select
-                value={finalidad}
-                onChange={({ target }) => setFinalidad(target.value)}
-              >
+              <Form.Select {...finalidad}>
                 <option>Seleccionar finalidad</option>
                 <option value="ENT">ENT</option>
                 <option value="INST">INST</option>
@@ -156,10 +136,7 @@ const HorasForm = () => {
             <Form.Group className="mb-3 utils-form-group" controlId="avion">
               <Form.Label>Avion</Form.Label>
               <div className="align-container d-flex">
-                <Form.Select
-                  value={avionMatricula}
-                  onChange={({ target }) => setAvionMatricula(target.value)}
-                >
+                <Form.Select {...avionMatricula}>
                   <option>Seleccionar avion</option>
                   <option value="LV-CMC">LV-CMC</option>
                   <option value="LV-WHU">LV-WHU</option>
@@ -192,7 +169,7 @@ const HorasForm = () => {
             <Form.Group className="mb-3  tiempos-vuelo-item" controlId="tiempo">
               <Form.Label>Tiempo</Form.Label>
               <Form.Control
-                type="number"
+                type="text"
                 value={tiempo}
                 onChange={({ target }) => setTiempo(target.value)}
               />
@@ -202,85 +179,49 @@ const HorasForm = () => {
               controlId="aterrizajes"
             >
               <Form.Label>Aterrizajes</Form.Label>
-              <Form.Control
-                type="number"
-                value={aterrizajes}
-                onChange={({ target }) => setAterrizajes(target.value)}
-              />
+              <Form.Control {...aterrizajes} />
             </Form.Group>
           </section>
           <section className="discriminacion-tiempos">
             <h2>Discriminacion Tiempos</h2>
             <InputGroup className="mb-3">
               <InputGroup.Text>instructor de vuelo</InputGroup.Text>
-              <Form.Control
-                type="number"
-                value={instructorDeVuelo}
-                onChange={({ target }) => setInstructorDeVuelo(target.value)}
-              />
+              <Form.Control {...instructorDeVuelo} />
             </InputGroup>
 
             <InputGroup className="mb-3">
               <InputGroup.Text>multi-motor</InputGroup.Text>
-              <Form.Control
-                type="number"
-                value={multiMotor}
-                onChange={({ target }) => setMultiMotor(target.value)}
-              />
+              <Form.Control {...multiMotor} />
             </InputGroup>
 
             <InputGroup className="mb-3">
               <InputGroup.Text>reactor</InputGroup.Text>
-              <Form.Control
-                type="number"
-                value={reactor}
-                onChange={({ target }) => setReactor(target.value)}
-              />
+              <Form.Control {...reactor} />
             </InputGroup>
 
             <InputGroup className="mb-3">
               <InputGroup.Text>turbo-helice</InputGroup.Text>
-              <Form.Control
-                type="number"
-                value={turboHelice}
-                onChange={({ target }) => setTurboHelice(target.value)}
-              />
+              <Form.Control {...turboHelice} />
             </InputGroup>
 
             <InputGroup className="mb-3">
               <InputGroup.Text>aeroaplicador</InputGroup.Text>
-              <Form.Control
-                type="number"
-                value={aeroaplicador}
-                onChange={({ target }) => setAeroaplicador(target.value)}
-              />
+              <Form.Control {...aeroaplicador} />
             </InputGroup>
 
             <InputGroup className="mb-3">
               <InputGroup.Text>instrumentos piloto</InputGroup.Text>
-              <Form.Control
-                type="number"
-                value={instrumentosRealP}
-                onChange={({ target }) => setInstrumentosRealP(target.value)}
-              />
+              <Form.Control {...instrumentosRealP} />
             </InputGroup>
 
             <InputGroup className="mb-3">
               <InputGroup.Text>instrumentos copiloto</InputGroup.Text>
-              <Form.Control
-                type="number"
-                value={instrumentosRealC}
-                onChange={({ target }) => setInstrumentosRealC(target.value)}
-              />
+              <Form.Control {...instrumentosRealC} />
             </InputGroup>
 
             <InputGroup className="mb-3">
               <InputGroup.Text>capota</InputGroup.Text>
-              <Form.Control
-                type="number"
-                value={capota}
-                onChange={({ target }) => setCapota(target.value)}
-              />
+              <Form.Control {...capota} />
             </InputGroup>
           </section>
           <Button type="submit">create</Button>

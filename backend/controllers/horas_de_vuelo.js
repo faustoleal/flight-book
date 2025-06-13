@@ -3,6 +3,11 @@ const { HorasDeVuelo, Pilotos, Aviones } = require("../models");
 const { sequelize } = require("../utils/db");
 const middelware = require("../utils/middelware");
 
+horasDeVueloRouter.get("/", async (req, res) => {
+  const horas = await HorasDeVuelo.findAll();
+  res.json(horas);
+});
+
 horasDeVueloRouter.get("/:id", async (req, res) => {
   const horas = await HorasDeVuelo.findAll({
     where: {

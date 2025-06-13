@@ -22,8 +22,9 @@ export const initializeLogin = () => {
   return async (dispatch) => {
     const loggedPilotoJSON = window.localStorage.getItem("loggedPiloto");
     if (loggedPilotoJSON) {
-      const user = JSON.parse(loggedPilotoJSON);
-      dispatch(initPiloto(user));
+      const piloto = JSON.parse(loggedPilotoJSON);
+      horasService.setToken(piloto.token);
+      dispatch(initPiloto(piloto));
     } else {
       dispatch(initPiloto(null));
     }
