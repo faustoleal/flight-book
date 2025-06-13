@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import useString from "../hooks/useString";
 import useSelect from "../hooks/useSelect";
 import useDefaultValue from "../hooks/useDefaultValue";
+import DiscriminacionInput from "./DiscriminacionInput";
 
 const HorasForm = () => {
   const dia = useString("date");
@@ -15,14 +16,16 @@ const HorasForm = () => {
   const finalidad = useSelect();
   const avionMatricula = useSelect();
   const [tiemposDeVuelo, setTiemposDeVuelo] = useState("");
-  const [localDiaP, setLocalDiaP] = useState("0");
-  const [localDiaC, setLocalDiaC] = useState("0");
-  const [localNocheP, setLocalNocheP] = useState("0");
-  const [localNocheC, setLocalNocheC] = useState("0");
-  const [travesiaDiaP, setTravesiaDiaP] = useState("0");
-  const [travesiaDiaC, setTravesiaDiaC] = useState("0");
-  const [travesiaNocheP, setTravesiaNocheP] = useState("0");
-  const [travesiaNocheC, setTravesiaNocheC] = useState("0");
+  const [tiempos, setTiempos] = useState({
+    localDiaP: "0",
+    localDiaC: "0",
+    localNocheP: "0",
+    localNocheC: "0",
+    travesiaDiaP: "0",
+    travesiaDiaC: "0",
+    travesiaNocheP: "0",
+    travesiaNocheC: "0",
+  });
   const [tiempo, setTiempo] = useState("0");
   const aterrizajes = useDefaultValue("0");
   const instructorDeVuelo = useDefaultValue("0");
@@ -37,22 +40,11 @@ const HorasForm = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (tiemposDeVuelo === "localDiaP") {
-      setLocalDiaP(tiempo);
-    } else if (tiemposDeVuelo === "localDiaC") {
-      setLocalDiaC(tiempo);
-    } else if (tiemposDeVuelo === "localNocheP") {
-      setLocalNocheP(tiempo);
-    } else if (tiemposDeVuelo === "localNocheC") {
-      setLocalNocheC(tiempo);
-    } else if (tiemposDeVuelo === "travesiaDiaP") {
-      setTravesiaDiaP(tiempo);
-    } else if (tiemposDeVuelo === "travesiaDiaC") {
-      setTravesiaDiaC(tiempo);
-    } else if (tiemposDeVuelo === "travesiaNocheP") {
-      setTravesiaNocheP(tiempo);
-    } else {
-      setTravesiaNocheC(tiempo);
+    if (tiemposDeVuelo && tiempo) {
+      setTiempos((prev) => ({
+        ...prev,
+        [tiemposDeVuelo]: tiempo,
+      }));
     }
   }, [tiemposDeVuelo, tiempo]);
 
@@ -67,14 +59,9 @@ const HorasForm = () => {
       horaLlegada: horaLlegada.value,
       finalidad: finalidad.value,
       avionMatricula: avionMatricula.value,
-      localDiaP: parseFloat(localDiaP),
-      localDiaC: parseFloat(localDiaC),
-      localNocheP: parseFloat(localNocheP),
-      localNocheC: parseFloat(localNocheC),
-      travesiaDiaP: parseFloat(travesiaDiaP),
-      travesiaDiaC: parseFloat(travesiaDiaC),
-      travesiaNocheP: parseFloat(travesiaNocheP),
-      travesiaNocheC: parseFloat(travesiaNocheC),
+      ...Object.fromEntries(
+        Object.entries(tiempos).map(([k, v]) => [k, parseFloat(v)])
+      ),
       aterrizajes: parseInt(aterrizajes.value),
       instructorDeVuelo: parseFloat(instructorDeVuelo.value),
       reactor: parseFloat(reactor.value),
@@ -184,45 +171,24 @@ const HorasForm = () => {
           </section>
           <section className="discriminacion-tiempos">
             <h2>Discriminacion Tiempos</h2>
-            <InputGroup className="mb-3">
-              <InputGroup.Text>instructor de vuelo</InputGroup.Text>
-              <Form.Control {...instructorDeVuelo} />
-            </InputGroup>
+            <DiscriminacionInput
+              label="instructor de vuelo"
+              {...instructorDeVuelo}
+            />
+            <DiscriminacionInput label="multi-motor" {...multiMotor} />
+            <DiscriminacionInput label="reactor" {...reactor} />
 
-            <InputGroup className="mb-3">
-              <InputGroup.Text>multi-motor</InputGroup.Text>
-              <Form.Control {...multiMotor} />
-            </InputGroup>
-
-            <InputGroup className="mb-3">
-              <InputGroup.Text>reactor</InputGroup.Text>
-              <Form.Control {...reactor} />
-            </InputGroup>
-
-            <InputGroup className="mb-3">
-              <InputGroup.Text>turbo-helice</InputGroup.Text>
-              <Form.Control {...turboHelice} />
-            </InputGroup>
-
-            <InputGroup className="mb-3">
-              <InputGroup.Text>aeroaplicador</InputGroup.Text>
-              <Form.Control {...aeroaplicador} />
-            </InputGroup>
-
-            <InputGroup className="mb-3">
-              <InputGroup.Text>instrumentos piloto</InputGroup.Text>
-              <Form.Control {...instrumentosRealP} />
-            </InputGroup>
-
-            <InputGroup className="mb-3">
-              <InputGroup.Text>instrumentos copiloto</InputGroup.Text>
-              <Form.Control {...instrumentosRealC} />
-            </InputGroup>
-
-            <InputGroup className="mb-3">
-              <InputGroup.Text>capota</InputGroup.Text>
-              <Form.Control {...capota} />
-            </InputGroup>
+            <DiscriminacionInput label="turbo helice" {...turboHelice} />
+            <DiscriminacionInput label="aeroaplicador" {...aeroaplicador} />
+            <DiscriminacionInput
+              label="instrumentos piloto"
+              {...instrumentosRealP}
+            />
+            <DiscriminacionInput
+              label="instrumentos copiloto"
+              {...instrumentosRealC}
+            />
+            <DiscriminacionInput label="capota" {...capota} />
           </section>
           <Button type="submit">create</Button>
         </Form>
