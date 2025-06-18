@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import avionService from "../services/avion";
+import avionesService from "../services/aviones";
 
-const avionSlice = createSlice({
-  name: "avion",
+const avionesSlice = createSlice({
+  name: "aviones",
   initialState: [],
   reducers: {
     setAvion(state, action) {
@@ -16,17 +16,17 @@ const avionSlice = createSlice({
 
 export const initializeAviones = () => {
   return async (dispatch) => {
-    const aviones = await avionService.getAll();
+    const aviones = await avionesService.getAll();
     dispatch(setAvion(aviones));
   };
 };
 
 export const createAvion = (avion) => {
   return async (dispatch) => {
-    const newAvion = await avionService.create(avion);
+    const newAvion = await avionesService.create(avion);
     dispatch(appendAvion(newAvion));
   };
 };
 
-export const { setAvion, appendAvion } = avionSlice.actions;
-export default avionSlice.reducer;
+export const { setAvion, appendAvion } = avionesSlice.actions;
+export default avionesSlice.reducer;

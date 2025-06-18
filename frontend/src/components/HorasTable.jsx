@@ -4,10 +4,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { initializeHoras } from "../reducers/horasReducer";
 
-const HorasTable = ({ login }) => {
+const HorasTable = () => {
+  const login = useSelector((state) => state.login);
+  const horas = useSelector((state) => state.horas);
+
   const dispatch = useDispatch();
   const id = login.id;
-  const horas = useSelector((state) => state.horas);
 
   useEffect(() => {
     dispatch(initializeHoras(id));

@@ -1,8 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import pilotoService from "../services/piloto";
+import pilotosService from "../services/pilotos";
 
-const pilotoSlice = createSlice({
-  name: "piloto",
+const pilotosSlice = createSlice({
+  name: "pilotos",
   initialState: [],
   reducers: {
     setPiloto(state, action) {
@@ -16,17 +16,17 @@ const pilotoSlice = createSlice({
 
 export const initializePilotos = () => {
   return async (dispatch) => {
-    const pilotos = await pilotoService.getAll();
+    const pilotos = await pilotosService.getAll();
     dispatch(setPiloto(pilotos));
   };
 };
 
 export const createPiloto = (piloto) => {
   return async (dispatch) => {
-    const newPiloto = await pilotoService.create(piloto);
+    const newPiloto = await pilotosService.create(piloto);
     dispatch(appendPiloto(newPiloto));
   };
 };
 
-export const { setPiloto, appendPiloto } = pilotoSlice.actions;
-export default pilotoSlice.reducer;
+export const { setPiloto, appendPiloto } = pilotosSlice.actions;
+export default pilotosSlice.reducer;

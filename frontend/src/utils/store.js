@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
 import loginReducer from "../reducers/loginReducer";
-import pilotosReducer from "../reducers/pilotoReducer";
+import pilotosReducer from "../reducers/pilotosReducer";
 import horasReducer from "../reducers/horasReducer";
-import avionReducer from "../reducers/avionReducer";
+import avionesReducer from "../reducers/avionesReducer";
 import totalesReducer from "../reducers/totalesReducer";
 
 export const store = configureStore({
@@ -10,7 +10,7 @@ export const store = configureStore({
     login: loginReducer,
     pilotos: pilotosReducer,
     horas: horasReducer,
-    avion: avionReducer,
+    aviones: avionesReducer,
     totales: totalesReducer,
   },
   middleware: (getDefaultMiddleware) =>

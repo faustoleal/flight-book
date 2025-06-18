@@ -1,20 +1,18 @@
 import { Form, Button, FloatingLabel } from "react-bootstrap";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { loginPiloto } from "../reducers/loginReducer";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
-const LoginForm = ({ setVisible }) => {
+const LoginForm = () => {
   const [usuario, setUsuario] = useState("");
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleLogin = (e) => {
     e.preventDefault();
     dispatch(loginPiloto({ usuario, password }));
-    navigate("/inicio");
     setPassword("");
     setUsuario("");
   };
@@ -46,9 +44,9 @@ const LoginForm = ({ setVisible }) => {
           </FloatingLabel>
         </Form.Group>
         <div className="buttons p-2 d-flex flex-wrap">
-          <a className="w-100" type="button" onClick={() => setVisible(false)}>
-            sing in
-          </a>
+          <Link className="w-100" to="/create-account">
+            registrate
+          </Link>
           <Button className="p-2 my-2 w-100" type="submit">
             Log in
           </Button>

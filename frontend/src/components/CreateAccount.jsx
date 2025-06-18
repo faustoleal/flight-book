@@ -1,7 +1,8 @@
 import { Form, Button, FloatingLabel } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { createPiloto } from "../reducers/pilotoReducer";
+import { createPiloto } from "../reducers/pilotosReducer";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const CreateAccount = () => {
   const [name, setName] = useState("");
@@ -9,6 +10,7 @@ const CreateAccount = () => {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleCreatePiloto = (e) => {
     e.preventDefault();
@@ -16,11 +18,12 @@ const CreateAccount = () => {
     setName("");
     setPassword("");
     setUsuario("");
+    navigate("/login");
   };
 
   return (
     <div className="form-p">
-      <h2 className="my-4 mx-auto">Create Account</h2>
+      <h2 className="my-4 mx-auto">Registrate</h2>
       <Form className="w-100 my-1 pilotos-form" onSubmit={handleCreatePiloto}>
         <Form.Group className="p-2">
           <FloatingLabel controlId="name" label="Full name" className="mb-3">

@@ -3,10 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { initializeTotales } from "../reducers/totalesReducer";
 
-const InicioPage = ({ login, name }) => {
+const InicioPage = () => {
+  const login = useSelector((state) => state.login);
+  const totales = useSelector((state) => state.totales);
+  
   const dispatch = useDispatch();
   const id = login.id;
-  const totales = useSelector((state) => state.totales);
 
   useEffect(() => {
     dispatch(initializeTotales(id));
@@ -14,7 +16,7 @@ const InicioPage = ({ login, name }) => {
 
   return (
     <main className="inicio-page">
-      <h1>Bienvenido {name}</h1>
+      <h1>Bienvenido</h1>
       {totales.length !== 0 && (
         <section className="totales">
           <h2>Totales de Vuelo</h2>
