@@ -22,6 +22,83 @@
   box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
 }
 
+/* Log Page */
+
+.log-page {
+  min-height: inherit;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background: linear-gradient(
+    0deg,
+    rgba(0, 82, 140, 1) 0%,
+    rgba(0, 251, 255, 1) 100%
+  );
+}
+
+.log-title {
+  flex-basis: 60%;
+  text-align: left;
+}
+
+& h1 {
+  color: #fff;
+  padding: 5px;
+  margin: 0.5rem;
+}
+
+& h3 {
+  color: #bfbfbf;
+  padding: 5px;
+  margin: 0.5rem;
+}
+
+.log-form {
+  flex-basis: 40%;
+  min-height: inherit;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+/* Login Form && Create Account Form */
+
+.form-p {
+  width: 100%;
+  background-color: white;
+}
+
+.pilotos-form {
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+& a {
+  text-decoration: none;
+  color: #000;
+}
+
+@media (width < 515px) {
+  .log-page {
+    align-items: stretch;
+  }
+  .log-title {
+    flex-basis: 100%;
+    align-self: center;
+  }
+
+  .log-form {
+    min-height: auto;
+    flex-basis: 95%;
+    margin: 0 auto;
+    border-radius: 3px;
+  }
+}
+
 /* Inicio page */
 
 .inicio-page {
@@ -91,44 +168,6 @@
   }
   .ventana {
     flex-basis: 24%;
-  }
-}
-
-/* Intro */
-
-.intro {
-  min-height: inherit;
-  width: 100vw;
-  background-color: #01d8d1;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  animation-name: show;
-  animation-timing-function: ease-out;
-  animation-duration: 3s;
-}
-
-.intro-title {
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  padding: 10px;
-}
-
-.title {
-  margin: 10px;
-}
-
-@keyframes show {
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
   }
 }
 
@@ -279,39 +318,4 @@
   & .input-group {
     flex-basis: 100%;
   }
-}
-
-/* Avion form && Create Account */
-
-.pilotos {
-  min-height: inherit;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.account {
-  min-height: inherit;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.pilotos-form {
-  height: auto;
-  max-width: 90%;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-}
-
-& a {
-  margin: 10px 0;
-}
-
-& h2 {
-  width: 100%;
-  margin: 20px 0;
 }

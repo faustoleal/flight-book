@@ -8,7 +8,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { initializeLogin } from "./reducers/loginReducer";
 import InicioPage from "./components/InicioPage";
-import InicioAlert from "./components/InicioAlert";
+import LogPage from "./components/LogPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -18,22 +18,18 @@ function App() {
     dispatch(initializeLogin());
   }, [dispatch]);
 
+  if (login === null) {
+    return <LogPage />;
+  }
+
   return (
     <>
-      {login === null ? (
-        <InicioAlert />
-      ) : (
-        <Routes>
-          <Route
-            path="/"
-            element={<InicioPage id={login.id} name={login.name} />}
-          />
-          <Route path="/login" element={<LoginForm />} />
-          <Route path="/create-account" element={<CreateAccount />} />
-          <Route path="/libro-vuelo" element={<HorasTable id={login.id} />} />
-          <Route path="/libro-vuelo/agregar-hora" element={<HorasForm />} />
-        </Routes>
-      )}
+      <Routes>
+        <Route path="/" element={<LogPage />} />
+        <Route path="/inicio" element={<InicioPage login={login} />} />
+        <Route path="/libro-vuelo" element={<HorasTable login={login} />} />
+        <Route path="/libro-vuelo/agregar-hora" element={<HorasForm />} />
+      </Routes>
     </>
   );
 }

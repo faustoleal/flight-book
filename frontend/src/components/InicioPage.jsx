@@ -3,8 +3,9 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { initializeTotales } from "../reducers/totalesReducer";
 
-const InicioPage = ({ id, name }) => {
+const InicioPage = ({ login, name }) => {
   const dispatch = useDispatch();
+  const id = login.id;
   const totales = useSelector((state) => state.totales);
 
   useEffect(() => {
@@ -12,7 +13,7 @@ const InicioPage = ({ id, name }) => {
   }, [id, dispatch]);
 
   return (
-    <div className="inicio-page">
+    <main className="inicio-page">
       <h1>Bienvenido {name}</h1>
       {totales.length !== 0 && (
         <section className="totales">
@@ -73,7 +74,7 @@ const InicioPage = ({ id, name }) => {
           <ArrowForwardIcon style={{ alignSelf: "end" }} />
         </a>
       </section>
-    </div>
+    </main>
   );
 };
 
