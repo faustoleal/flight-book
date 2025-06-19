@@ -10,6 +10,19 @@ Aerodromos.init(
       type: DataTypes.STRING(4),
       primaryKey: true,
       allowNull: false,
+      validate: {
+        isAlpha: {
+          args: true,
+          msg: "Aerodromo no puede contener numeros o espacios",
+        },
+        notNull: {
+          msg: "Aerodromo no puede estar vacio",
+        },
+        len: {
+          args: [3, 4],
+          msg: "El aerodromo no puede tener mas de 4 letras o menos de 3",
+        },
+      },
     },
   },
   {

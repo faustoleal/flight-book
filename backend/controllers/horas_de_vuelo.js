@@ -102,16 +102,20 @@ horasDeVueloRouter.get("/:id/totales", async (req, res) => {
   }
 });
 
-horasDeVueloRouter.post("/", middelware.pilotoExtractor, async (req, res) => {
-  try {
-    const hora = await HorasDeVuelo.create({
-      ...req.body,
-      pilotoId: req.piloto.id,
-    });
-    res.json(hora);
-  } catch (error) {
-    res.json({ error: "error", error });
+horasDeVueloRouter.post(
+  "/",
+  middelware.pilotoExtractor,
+  async (req, res, next) => {
+    try {
+      const hora = await HorasDeVuelo.create({
+        ...req.body,
+        pilotoId: req.piloto.id,
+      });
+      res.json(hora);
+    } catch (error) {
+      next(error);
+    }
   }
-});
+);
 
 module.exports = horasDeVueloRouter;

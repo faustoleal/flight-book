@@ -6,12 +6,12 @@ avionesRouter.get("/", async (req, res) => {
   res.json(aviones);
 });
 
-avionesRouter.post("/", async (req, res) => {
+avionesRouter.post("/", async (req, res, next) => {
   try {
     const avion = await Aviones.create(req.body);
     res.status(201).json(avion);
   } catch (error) {
-    res.json({ error: "something happend", error });
+    next(error);
   }
 });
 

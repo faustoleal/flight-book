@@ -14,33 +14,84 @@ HorasDeVuelo.init(
     dia: {
       type: DataTypes.DATEONLY,
       allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Te olvidaste de poner el dia del vuelo",
+        },
+      },
     },
     horaSalida: {
       type: DataTypes.TIME,
       allowNull: false,
+      validate: {
+        notNull: {
+          msg: "La hora de salida es obligatoria ",
+        },
+      },
     },
     desde: {
       type: DataTypes.STRING(4),
       allowNull: false,
       references: { model: "aerodromos", key: "aerodromo" },
+      validate: {
+        isAlpha: {
+          args: true,
+          msg: "El aerodromo no puede contener espacios o numeros",
+        },
+        notNull: {
+          msg: "El aerodromo de salida es obligatorio",
+        },
+        len: {
+          args: [3, 4],
+          msg: "El aerodromo no puede tener mas de 4 letras o menos de 3",
+        },
+      },
     },
     hasta: {
       type: DataTypes.STRING(4),
       allowNull: false,
       references: { model: "aerodromos", key: "aerodromo" },
+      validate: {
+        isAlpha: {
+          args: true,
+          msg: "El aerodromo de llegada no puede contener espacios o numeros",
+        },
+        notNull: {
+          msg: "El aerodromo de llegada es obligatorio",
+        },
+        len: {
+          args: [3, 4],
+          msg: "El aerodromo no puede tener mas de 4 letras o menos de 3",
+        },
+      },
     },
     horaLlegada: {
       type: DataTypes.TIME,
       allowNull: false,
+      validate: {
+        notNull: {
+          msg: "La hora de llegada es obligatoria",
+        },
+      },
     },
     finalidad: {
       type: DataTypes.ENUM("ENT", "INST", "READP"),
       allowNull: false,
+      validate: {
+        notNull: {
+          msg: "El campo finalidad es obligatorio",
+        },
+      },
     },
     avionMatricula: {
       type: DataTypes.CHAR(6),
       allowNull: false,
       references: { model: "aviones", key: "matricula" },
+      validate: {
+        notNull: {
+          msg: "Seleccionar un avion es necesario",
+        },
+      },
     },
     localDiaP: {
       type: DataTypes.FLOAT,
@@ -77,6 +128,11 @@ HorasDeVuelo.init(
     aterrizajes: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      validate: {
+        notNull: {
+          msg: "Tiene que poner los aterrizajes realizados",
+        },
+      },
     },
     instructorDeVuelo: {
       type: DataTypes.FLOAT,

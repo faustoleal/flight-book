@@ -6,12 +6,12 @@ aerodromosRouter.get("/", async (req, res) => {
   res.json(aerodromos);
 });
 
-aerodromosRouter.post("/", async (req, res) => {
+aerodromosRouter.post("/", async (req, res, next) => {
   try {
     const aerodromo = await Aerodromos.create(req.body);
     res.status(201).json(aerodromo);
   } catch (error) {
-    res.json({ error: "something happend", error });
+    next(error);
   }
 });
 

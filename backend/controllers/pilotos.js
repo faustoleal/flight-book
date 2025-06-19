@@ -4,20 +4,16 @@ const bcrypt = require("bcrypt");
 const { Pilotos, HorasDeVuelo } = require("../models");
 
 pilotosRouter.get("/", async (req, res) => {
-  try {
-    const pilotos = await Pilotos.findAll({
-      attributes: { exclude: ["passwordHash"] },
-      include: {
-        model: HorasDeVuelo,
-      },
-    });
-    res.json(pilotos);
-  } catch (error) {
-    res.json(error);
-  }
+  const pilotos = await Pilotos.findAll({
+    attributes: { exclude: ["passwordHash"] },
+    include: {
+      model: HorasDeVuelo,
+    },
+  });
+  res.json(pilotos);
 });
 
-pilotosRouter.post("/", async (req, res) => {
+pilotosRouter.post("/", async (req, res, next) => {
   const { name, usuario, password } = req.body;
 
   if (!password) {
@@ -36,7 +32,7 @@ pilotosRouter.post("/", async (req, res) => {
 
     res.json("usuario creado correctamente");
   } catch (error) {
-    res.json(error);
+    next(error);
   }
 });
 

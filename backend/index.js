@@ -34,5 +34,6 @@ const start = async () => {
 };
 
 app.use(middelware.unknownEndpoint);
+app.use(middelware.errorHandler);
 
 start();
