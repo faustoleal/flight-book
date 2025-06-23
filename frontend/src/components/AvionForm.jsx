@@ -1,9 +1,9 @@
-import { Form, Button, FloatingLabel } from "react-bootstrap";
+import { Form, Button, FloatingLabel, Modal } from "react-bootstrap";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createAvion } from "../reducers/avionReducer";
+import { createAvion } from "../reducers/avionesReducer";
 
-const AvionForm = () => {
+const AvionForm = ({ show, setShow }) => {
   const [matricula, setMatricula] = useState("");
   const [modelo, setModelo] = useState("");
   const [potencia, setPotencia] = useState("");
@@ -14,6 +14,7 @@ const AvionForm = () => {
   const handleCreateAvion = (e) => {
     e.preventDefault();
     dispatch(createAvion({ matricula, modelo, potencia, clase }));
+    setShow(false);
     setMatricula("");
     setModelo("");
     setPotencia("");
@@ -21,10 +22,12 @@ const AvionForm = () => {
   };
 
   return (
-    <section className="avion">
-      <div className="form">
-        <h2>Add New Aircraft</h2>
-        <Form className="w-100 p-2" onSubmit={handleCreateAvion}>
+    <Modal show={show} onHide={() => setShow(false)}>
+      <Modal.Header closeButton>
+        <Modal.Title>Agregar avion</Modal.Title>
+      </Modal.Header>
+      <Modal.Body>
+        <Form className="w-100 p-2">
           <div className="avion-form">
             <Form.Group className="p-2 avion-item">
               <FloatingLabel
@@ -79,12 +82,17 @@ const AvionForm = () => {
               </FloatingLabel>
             </Form.Group>
           </div>
-          <Button className="py-2 px-3 my-3" variant="primary" type="submit">
-            add airplane
-          </Button>
         </Form>
-      </div>
-    </section>
+      </Modal.Body>
+      <Modal.Footer>
+        <Button variant="secondary" onClick={() => setShow(false)}>
+          Close
+        </Button>
+        <Button variant="primary" type="submit" onClick={handleCreateAvion}>
+          Agregar
+        </Button>
+      </Modal.Footer>
+    </Modal>
   );
 };
 

@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 #root {
   max-width: 100%;
   width: 100%;
@@ -173,35 +177,14 @@
 
 /* Avion Form */
 
-.avion {
-  min-height: inherit;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-& h2 {
-  width: 100%;
-  margin: 20px 0;
-}
-
 .avion-form {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: column;
   justify-content: space-between;
 }
 
-.avion-item {
-  flex-basis: 48%;
-}
-
-@media (width < 350px) {
-  .avion-item {
-    flex-basis: 100%;
-  }
-}
-
-/* Avion Form */
+/* Horas Form */
 
 .horas {
   min-height: inherit;

@@ -1,6 +1,5 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import PrivateRoute from "./utils/PrivateRoute";
 import InicioPage from "./components/InicioPage";
 import LoginPage from "./components/LoginPage";
 import CreatePage from "./components/CreatePage";
@@ -26,21 +25,12 @@ const AppRoutes = () => {
       <Route
         path="/libro-vuelo"
         element={
-          <PrivateRoute>
-            <Suspense fallback={<div>Cargando...</div>}>
-              <HorasTable />
-            </Suspense>
-          </PrivateRoute>
+          <Suspense fallback={<div>Cargando...</div>}>
+            <HorasTable />
+          </Suspense>
         }
       />
-      <Route
-        path="/libro-vuelo/agregar-hora"
-        element={
-          <PrivateRoute>
-            <HorasForm />
-          </PrivateRoute>
-        }
-      />
+      <Route path="/libro-vuelo/agregar-hora" element={<HorasForm />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

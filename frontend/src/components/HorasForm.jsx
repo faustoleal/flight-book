@@ -1,4 +1,5 @@
-import { Button, Form, InputGroup } from "react-bootstrap";
+import { Button, Form } from "react-bootstrap";
+import AvionForm from "./AvionForm";
 import { useDispatch } from "react-redux";
 import { createHoras } from "../reducers/horasReducer";
 import { useEffect, useState } from "react";
@@ -18,6 +19,8 @@ const HorasForm = () => {
     travesiaNocheP: "0",
     travesiaNocheC: "0",
   };
+
+  const [show, setShow] = useState(false);
 
   const dia = useString("date");
   const horaSalida = useString("time");
@@ -99,122 +102,135 @@ const HorasForm = () => {
   };
 
   return (
-    <div className="horas">
-      <div className="form">
-        <h2>Nueva Hora</h2>
-        <Form className="w-1'0''0' p-2" onSubmit={handleCreateHora}>
-          <section className="itinerario">
-            <Form.Group className="mb-3 itinerario-item" controlId="dia">
-              <Form.Label>Fecha</Form.Label>
-              <Form.Control {...dia} />
-            </Form.Group>
-            <Form.Group
-              className="mb-3 itinerario-item"
-              controlId="hora_de_salida"
-            >
-              <Form.Label>Hora de Salida</Form.Label>
-              <Form.Control {...horaSalida} />
-            </Form.Group>
-            <Form.Group className="mb-3 itinerario-item" controlId="desde">
-              <Form.Label>Desde</Form.Label>
-              <Form.Control {...desde} />
-            </Form.Group>
-            <Form.Group className="mb-3 itinerario-item" controlId="hasta">
-              <Form.Label>Hasta</Form.Label>
-              <Form.Control {...hasta} />
-            </Form.Group>
-            <Form.Group
-              className="mb-3 itinerario-item"
-              controlId="hora_de_llegada"
-            >
-              <Form.Label>Hora de llegada</Form.Label>
-              <Form.Control {...horaLlegada} />
-            </Form.Group>
-          </section>
-          <section className="utils">
-            <Form.Group className="mb-3 utils-form-group" controlId="finalidad">
-              <Form.Label>Finalidad del Vuelo</Form.Label>
-              <Form.Select {...finalidad}>
-                <option>Seleccionar finalidad</option>
-                <option value="ENT">ENT</option>
-                <option value="INST">INST</option>
-                <option value="READP">READP</option>
-              </Form.Select>
-            </Form.Group>
-            <Form.Group className="mb-3 utils-form-group" controlId="avion">
-              <Form.Label>Avion</Form.Label>
-              <div className="align-container d-flex">
-                <Form.Select {...avionMatricula}>
-                  <option>Seleccionar avion</option>
-                  <option value="LV-CMC">LV-CMC</option>
-                  <option value="LV-WHU">LV-WHU</option>
-                </Form.Select>
-                <Button className="avionBtn">Agregar Avion</Button>
-              </div>
-            </Form.Group>
-          </section>
-          <section className="tiempos-de-vuelo">
-            <Form.Group
-              className="mb-3 tiempos-vuelo-item"
-              controlId="tiempos_de_vuelo"
-            >
-              <Form.Label>Tiempos de Vuelo</Form.Label>
-              <Form.Select
-                value={tiemposDeVuelo}
-                onChange={({ target }) => setTiemposDeVuelo(target.value)}
+    <>
+      <div className="horas">
+        <div className="form">
+          <h2>Nueva Hora</h2>
+          <Form className="w-1'0''0' p-2" onSubmit={handleCreateHora}>
+            <section className="itinerario">
+              <Form.Group className="mb-3 itinerario-item" controlId="dia">
+                <Form.Label>Fecha</Form.Label>
+                <Form.Control {...dia} />
+              </Form.Group>
+              <Form.Group
+                className="mb-3 itinerario-item"
+                controlId="hora_de_salida"
               >
-                <option>Seleccionar tiempos</option>
-                <option value="localDiaP">local dia piloto</option>
-                <option value="localDiaC">local dia copiloto</option>
-                <option value="localNocheP">local noche piloto</option>
-                <option value="localNocheC">local noche copiloto</option>
-                <option value="travesiaDiaP">travesia dia piloto</option>
-                <option value="travesiaDiaC">travesia dia copiloto</option>
-                <option value="travesiaNocheP">travesia noche piloto</option>
-                <option value="travesiaNocheC">travesia noche copiloto</option>
-              </Form.Select>
-            </Form.Group>
-            <Form.Group className="mb-3  tiempos-vuelo-item" controlId="tiempo">
-              <Form.Label>Tiempo</Form.Label>
-              <Form.Control
-                type="text"
-                value={tiempo}
-                onChange={({ target }) => setTiempo(target.value)}
+                <Form.Label>Hora de Salida</Form.Label>
+                <Form.Control {...horaSalida} />
+              </Form.Group>
+              <Form.Group className="mb-3 itinerario-item" controlId="desde">
+                <Form.Label>Desde</Form.Label>
+                <Form.Control {...desde} />
+              </Form.Group>
+              <Form.Group className="mb-3 itinerario-item" controlId="hasta">
+                <Form.Label>Hasta</Form.Label>
+                <Form.Control {...hasta} />
+              </Form.Group>
+              <Form.Group
+                className="mb-3 itinerario-item"
+                controlId="hora_de_llegada"
+              >
+                <Form.Label>Hora de llegada</Form.Label>
+                <Form.Control {...horaLlegada} />
+              </Form.Group>
+            </section>
+            <section className="utils">
+              <Form.Group
+                className="mb-3 utils-form-group"
+                controlId="finalidad"
+              >
+                <Form.Label>Finalidad del Vuelo</Form.Label>
+                <Form.Select {...finalidad}>
+                  <option>Seleccionar finalidad</option>
+                  <option value="ENT">ENT</option>
+                  <option value="INST">INST</option>
+                  <option value="READP">READP</option>
+                </Form.Select>
+              </Form.Group>
+              <Form.Group className="mb-3 utils-form-group" controlId="avion">
+                <Form.Label>Avion</Form.Label>
+                <div className="align-container d-flex">
+                  <Form.Select {...avionMatricula}>
+                    <option>Seleccionar avion</option>
+                    <option value="LV-CMC">LV-CMC</option>
+                    <option value="LV-WHU">LV-WHU</option>
+                  </Form.Select>
+                  <Button className="avionBtn" onClick={() => setShow(true)}>
+                    Agregar Avion
+                  </Button>
+                </div>
+              </Form.Group>
+            </section>
+            <section className="tiempos-de-vuelo">
+              <Form.Group
+                className="mb-3 tiempos-vuelo-item"
+                controlId="tiempos_de_vuelo"
+              >
+                <Form.Label>Tiempos de Vuelo</Form.Label>
+                <Form.Select
+                  value={tiemposDeVuelo}
+                  onChange={({ target }) => setTiemposDeVuelo(target.value)}
+                >
+                  <option>Seleccionar tiempos</option>
+                  <option value="localDiaP">local dia piloto</option>
+                  <option value="localDiaC">local dia copiloto</option>
+                  <option value="localNocheP">local noche piloto</option>
+                  <option value="localNocheC">local noche copiloto</option>
+                  <option value="travesiaDiaP">travesia dia piloto</option>
+                  <option value="travesiaDiaC">travesia dia copiloto</option>
+                  <option value="travesiaNocheP">travesia noche piloto</option>
+                  <option value="travesiaNocheC">
+                    travesia noche copiloto
+                  </option>
+                </Form.Select>
+              </Form.Group>
+              <Form.Group
+                className="mb-3  tiempos-vuelo-item"
+                controlId="tiempo"
+              >
+                <Form.Label>Tiempo</Form.Label>
+                <Form.Control
+                  type="text"
+                  value={tiempo}
+                  onChange={({ target }) => setTiempo(target.value)}
+                />
+              </Form.Group>
+              <Form.Group
+                className="mb-3  tiempos-vuelo-item"
+                controlId="aterrizajes"
+              >
+                <Form.Label>Aterrizajes</Form.Label>
+                <Form.Control {...aterrizajes} />
+              </Form.Group>
+            </section>
+            <section className="discriminacion-tiempos">
+              <h2>Discriminacion Tiempos</h2>
+              <DiscriminacionInput
+                label="instructor de vuelo"
+                {...instructorDeVuelo}
               />
-            </Form.Group>
-            <Form.Group
-              className="mb-3  tiempos-vuelo-item"
-              controlId="aterrizajes"
-            >
-              <Form.Label>Aterrizajes</Form.Label>
-              <Form.Control {...aterrizajes} />
-            </Form.Group>
-          </section>
-          <section className="discriminacion-tiempos">
-            <h2>Discriminacion Tiempos</h2>
-            <DiscriminacionInput
-              label="instructor de vuelo"
-              {...instructorDeVuelo}
-            />
-            <DiscriminacionInput label="multi-motor" {...multiMotor} />
-            <DiscriminacionInput label="reactor" {...reactor} />
+              <DiscriminacionInput label="multi-motor" {...multiMotor} />
+              <DiscriminacionInput label="reactor" {...reactor} />
 
-            <DiscriminacionInput label="turbo helice" {...turboHelice} />
-            <DiscriminacionInput label="aeroaplicador" {...aeroaplicador} />
-            <DiscriminacionInput
-              label="instrumentos piloto"
-              {...instrumentosRealP}
-            />
-            <DiscriminacionInput
-              label="instrumentos copiloto"
-              {...instrumentosRealC}
-            />
-            <DiscriminacionInput label="capota" {...capota} />
-          </section>
-          <Button type="submit">create</Button>
-        </Form>
+              <DiscriminacionInput label="turbo helice" {...turboHelice} />
+              <DiscriminacionInput label="aeroaplicador" {...aeroaplicador} />
+              <DiscriminacionInput
+                label="instrumentos piloto"
+                {...instrumentosRealP}
+              />
+              <DiscriminacionInput
+                label="instrumentos copiloto"
+                {...instrumentosRealC}
+              />
+              <DiscriminacionInput label="capota" {...capota} />
+            </section>
+            <Button type="submit">create</Button>
+          </Form>
+        </div>
       </div>
-    </div>
+      <AvionForm show={show} setShow={setShow} />
+    </>
   );
 };
 
