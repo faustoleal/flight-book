@@ -9,11 +9,12 @@ const HorasTable = () => {
   const horas = useSelector((state) => state.horas);
 
   const dispatch = useDispatch();
-  const id = login.id;
 
   useEffect(() => {
-    dispatch(initializeHoras(id));
-  }, [id, dispatch]);
+    if (login?.id) dispatch(initializeHoras(login.id));
+  }, [login, dispatch]);
+
+  if (!login || !horas) return <div>Cargando...</div>;
 
   return (
     <Table striped bordered responsive>

@@ -31,7 +31,7 @@ horasDeVueloRouter.get("/:id", async (req, res) => {
 
 horasDeVueloRouter.get("/:id/totales", async (req, res) => {
   try {
-    const totales = await HorasDeVuelo.findAll({
+    const totales = await HorasDeVuelo.findOne({
       where: {
         pilotoId: req.params.id,
       },

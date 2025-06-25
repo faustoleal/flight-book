@@ -327,6 +327,22 @@
 
 /* probando */
 
-.last-card {
-  flex-basis: 33%;
+.totales-carousel {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.carousel-card-group {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.carousel-card {
+  min-height: 15vh;
+  max-width: 30%;
+  flex: 1 1 30%;
+  border: 1px solid red !important;
+  border-radius: 0px;
 }

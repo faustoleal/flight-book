@@ -3,7 +3,7 @@ import horasService from "../services/horas";
 
 const totalesSlice = createSlice({
   name: "totales",
-  initialState: [],
+  initialState: null,
   reducers: {
     setTotales(state, action) {
       return action.payload;

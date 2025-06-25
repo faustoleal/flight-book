@@ -1,12 +1,12 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { lazy, Suspense } from "react";
-import InicioPage from "./components/InicioPage";
 import LoginPage from "./components/LoginPage";
 import CreatePage from "./components/CreatePage";
 import HorasForm from "./components/HorasForm";
 import { useSelector } from "react-redux";
 
 const HorasTable = lazy(() => import("./components/HorasTable"));
+const InicioPage = lazy(() => import("./components/InicioPage"));
 
 const AppRoutes = () => {
   const login = useSelector((state) => state.login);
@@ -15,7 +15,15 @@ const AppRoutes = () => {
     <Routes>
       <Route
         path="/"
-        element={login ? <InicioPage /> : <Navigate to="/login" />}
+        element={
+          login ? (
+            <Suspense fallback={<div>Cargando...</div>}>
+              <InicioPage />
+            </Suspense>
+          ) : (
+            <Navigate to="/login" />
+          )
+        }
       />
       <Route
         path="/login"
