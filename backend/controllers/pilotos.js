@@ -13,6 +13,13 @@ pilotosRouter.get("/", async (req, res) => {
   res.json(pilotos);
 });
 
+pilotosRouter.get("/:id", async (req, res) => {
+  const pilotos = await Pilotos.findByPk(req.params.id, {
+    attributes: { exclude: ["passwordHash"] },
+  });
+  res.json(pilotos);
+});
+
 pilotosRouter.post("/", async (req, res, next) => {
   const { name, usuario, password } = req.body;
 

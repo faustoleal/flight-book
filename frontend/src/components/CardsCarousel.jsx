@@ -32,14 +32,13 @@ const CARDS = [
 
 const CardsCarousel = () => {
   const dispatch = useDispatch();
-  const login = useSelector((state) => state.login);
   const totales = useSelector((state) => state.totales);
 
   useEffect(() => {
-    if (login?.id) dispatch(initializeTotales(login.id));
-  }, [login, dispatch]);
+    dispatch(initializeTotales());
+  }, [dispatch]);
 
-  if (!login || !totales) return <div>Cargando...</div>;
+  if (!totales) return <div>Cargando...</div>;
 
   return (
     <Carousel className="totales-carousel" indicators={false}>

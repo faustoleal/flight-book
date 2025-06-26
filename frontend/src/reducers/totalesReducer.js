@@ -11,10 +11,16 @@ const totalesSlice = createSlice({
   },
 });
 
-export const initializeTotales = (id) => {
+export const initializeTotales = () => {
   return async (dispatch) => {
-    const total = await horasService.getTotales(id);
-    dispatch(setTotales(total));
+    const loggedPilotoJSON = window.localStorage.getItem("loggedPiloto");
+    if (loggedPilotoJSON) {
+      const piloto = JSON.parse(loggedPilotoJSON);
+      const totales = await horasService.getTotales(piloto.id);
+      dispatch(setTotales(totales));
+    } else {
+      console.log({ error: "not pilot logged" });
+    }
   };
 };
 

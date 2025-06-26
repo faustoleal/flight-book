@@ -3,7 +3,7 @@ import pilotosService from "../services/pilotos";
 
 const pilotosSlice = createSlice({
   name: "pilotos",
-  initialState: [],
+  initialState: null,
   reducers: {
     setPiloto(state, action) {
       return action.payload;
@@ -18,6 +18,19 @@ export const initializePilotos = () => {
   return async (dispatch) => {
     const pilotos = await pilotosService.getAll();
     dispatch(setPiloto(pilotos));
+  };
+};
+
+export const initializePiloto = () => {
+  return async (dispatch) => {
+    const loggedPilotoJSON = window.localStorage.getItem("loggedPiloto");
+    if (loggedPilotoJSON) {
+      const pilotoLogged = JSON.parse(loggedPilotoJSON);
+      const piloto = await pilotosService.getPiloto(pilotoLogged.id);
+      dispatch(setPiloto(piloto));
+    } else {
+      console.log({ error: "not pilot logged" });
+    }
   };
 };
 

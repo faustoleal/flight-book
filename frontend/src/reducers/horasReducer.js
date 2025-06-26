@@ -14,10 +14,16 @@ const horasSlice = createSlice({
   },
 });
 
-export const initializeHoras = (id) => {
+export const initializeHoras = () => {
   return async (dispatch) => {
-    const horas = await horasService.getAll(id);
-    dispatch(setHoras(horas));
+    const loggedPilotoJSON = window.localStorage.getItem("loggedPiloto");
+    if (loggedPilotoJSON) {
+      const piloto = JSON.parse(loggedPilotoJSON);
+      const horas = await horasService.getAll(piloto.id);
+      dispatch(setHoras(horas));
+    } else {
+      console.log({ error: "not pilot logged" });
+    }
   };
 };
 

@@ -5,16 +5,15 @@ import { useEffect } from "react";
 import { initializeHoras } from "../reducers/horasReducer";
 
 const HorasTable = () => {
-  const login = useSelector((state) => state.login);
   const horas = useSelector((state) => state.horas);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (login?.id) dispatch(initializeHoras(login.id));
-  }, [login, dispatch]);
+    dispatch(initializeHoras());
+  }, [dispatch]);
 
-  if (!login || !horas) return <div>Cargando...</div>;
+  if (!horas) return <div>Cargando...</div>;
 
   return (
     <Table striped bordered responsive>
