@@ -51,7 +51,11 @@ const CardsCarousel = () => {
                 <Card.Body>
                   <Card.Title>{card.icon}</Card.Title>
                   <Card.Subtitle>{card.subtitle}</Card.Subtitle>
-                  <Card.Text>{totales[card.key]}</Card.Text>
+                  {card.key === "total_aterrizajes" ? (
+                    <Card.Text>{totales[card.key]}</Card.Text>
+                  ) : (
+                    <Card.Text>{`${totales[card.key]} hrs`}</Card.Text>
+                  )}
                 </Card.Body>
               </Card>
             ))}

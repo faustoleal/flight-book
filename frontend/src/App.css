@@ -68,14 +68,8 @@
   text-align: left;
 }
 
-& h1 {
+.log-title > h1 & h3 {
   color: #fff;
-  padding: 5px;
-  margin: 0.5rem;
-}
-
-& h3 {
-  color: #bfbfbf;
   padding: 5px;
   margin: 0.5rem;
 }
@@ -130,39 +124,10 @@
 
 .inicio-page {
   min-height: inherit;
+  margin: 15px auto;
 }
 
 /* totales section */
-
-.totales {
-  width: 90%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.totales-list {
-  display: grid;
-  grid-template-columns: repeat(3, 32%);
-  gap: 10px;
-}
-
-.total-item {
-  min-height: 75px;
-  padding: 5px;
-  border-radius: 3px;
-  box-shadow: 0 0 5px #1f1f1f66;
-  display: flex;
-  align-content: center;
-  justify-content: center;
-  flex-direction: column;
-}
-
-.total-item:last-child {
-  grid-column: span 2;
-}
 
 /* links section */
 
@@ -345,4 +310,26 @@
   flex: 1 1 30%;
   border: 1px solid red !important;
   border-radius: 0px;
+}
+
+/* header */
+
+.fondo {
+  min-height: 50vh;
+  background-image: url("/img/responsive.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.header-title {
+  text-align: start;
+}
+
+.header-title h1 {
+  color: white;
+}
+
+.header-title h5 {
+  color: grey;
 }
