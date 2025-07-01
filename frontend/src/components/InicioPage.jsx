@@ -5,6 +5,7 @@ import Header from "./Header";
 import { useDispatch, useSelector } from "react-redux";
 import { initializePiloto } from "../reducers/pilotosReducer";
 import { useEffect } from "react";
+import LinksCards from "./LinksCards";
 
 const InicioPage = () => {
   const dispatch = useDispatch();
@@ -18,11 +19,28 @@ const InicioPage = () => {
 
   return (
     <>
-      <NavigationBar />
-      <Header />
       <main className="inicio-page">
-        <h1>Bienvenido {piloto.name}</h1>
-        <CardsCarousel />
+        <Header />
+        <div className="introduccion">
+          <h1>Bienvenido {piloto.name}!</h1>
+          <h4>
+            Ya puedes comenzar a llevar un registro de tus horas de vuelo de
+            manera digital
+          </h4>
+        </div>
+        <section className="links">
+          <LinksCards />
+        </section>
+        <section className="total">
+          <div className="total-title">
+            <h4>Mi total de vuelos</h4>
+            <h5>
+              Aqui puedes ver tus vuelos realizados, en el momento del dia que
+              los hiciste, el tipo, el rol que desempenaste y mas
+            </h5>
+          </div>
+          <CardsCarousel />
+        </section>
       </main>
       <Footer />
     </>

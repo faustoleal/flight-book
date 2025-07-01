@@ -25,17 +25,27 @@
 /* Footer */
 
 .footer {
+  margin-top: 25px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   padding: 10px;
-  background-color: red;
+  color: #7efff9;
+  background-color: #515151;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
 }
+
+.footer a {
+  text-decoration: none;
+  color: inherit;
+}
+
 .footer nav {
   display: flex;
   flex-direction: column;
   text-align: left;
   padding: 10px;
+  color: inherit;
 }
 .contact {
   display: flex;
@@ -98,7 +108,7 @@
   justify-content: space-between;
 }
 
-& a {
+.pilotos-form a {
   text-decoration: none;
   color: #000;
 }
@@ -120,49 +130,149 @@
   }
 }
 
+/* fin Login Form && Create Account Form   */
+
 /* Inicio page */
 
-.inicio-page {
-  min-height: inherit;
-  margin: 15px auto;
-  background-color: snow;
+/* header */
+
+.header {
+  min-height: 60vh;
 }
 
-/* totales section */
+.fondo {
+  min-height: inherit;
+  background-image: url("/img/responsive.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 
-/* links section */
+.header-title {
+  text-align: start;
+}
+
+.header-title h1 {
+  color: white;
+}
+
+.header-title h5 {
+  color: grey;
+}
+
+/* fin header */
+
+/* section introduccion */
+
+.introduccion {
+  max-height: 40vh;
+  height: 40vh;
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.introduccion h1 {
+  color: #7efff9;
+}
+
+.introduccion h4 {
+  color: #515151;
+}
+
+/* fin section introduccion */
+
+/* section links */
 
 .links {
-  margin: 0 auto;
   width: 90%;
+  margin: 10px auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
 }
 
-.ventana {
+.link-card {
   flex-basis: 48%;
-  height: 100px;
-  padding: 8px;
-  border: 2px solid black;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  text-align: left;
-  box-shadow: 5px 5px #000;
-  color: #000;
-  font-size: 16px;
   text-decoration: none;
+  color: #000;
 }
 
-@media (width > 615px) {
-  .totales-list {
-    grid-template-columns: repeat(4, 23.5%);
+.link-card img {
+  max-height: 240px;
+  object-fit: cover;
+}
+
+/* fin section links */
+
+/* section total */
+
+.total {
+  width: 90%;
+  margin: 20px auto;
+  text-align: center;
+}
+
+.total-title {
+  margin: 10px 0;
+  text-align: left;
+}
+
+.total-title h5 {
+  color: #515151;
+}
+
+/* fin section total */
+
+/* CardsCarousel */
+
+.totales-carousel {
+  width: 80%;
+  margin: 30px auto;
+}
+
+.carousel-card-group {
+  margin: 15px;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.carousel-card {
+  min-height: 15vh;
+  max-height: 165px;
+  height: auto;
+  flex: 1 1 30%;
+  max-width: 30%;
+  border: 1px solid transparent !important;
+  border-radius: 10px !important;
+  box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.15);
+  background-color: #7efff9;
+  color: #515151;
+}
+
+.carousel-card-body > * {
+  margin: 5px auto;
+}
+
+@media (width < 650px) {
+  .carousel-card-group {
+    min-height: 455px;
+    flex-direction: column;
   }
-  .ventana {
-    flex-basis: 24%;
+
+  .carousel-card {
+    max-width: 100%;
+    flex: 1 1 100%;
   }
 }
+
+/* fin CardsCarousel */
+
+/* fin inicioPAge */
 
 /* Avion Form */
 
@@ -172,6 +282,8 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
+/* fin Avion Form */
 
 /* Horas Form */
 
@@ -213,6 +325,8 @@
   }
 }
 
+/* fin itinerario section */
+
 /* utils section */
 
 .utils {
@@ -230,6 +344,8 @@
     flex-basis: 100%;
   }
 }
+
+/* fin utils section */
 
 /* section  tiempos-de-vuelo */
 
@@ -262,6 +378,8 @@
   }
 }
 
+/* fin section tiempos-de-vuelo */
+
 /* section discriminacion-tiempos */
 
 .discriminacion-tiempos {
@@ -291,46 +409,4 @@
   }
 }
 
-/* probando */
-
-.totales-carousel {
-  width: 80%;
-  margin: 0 auto;
-}
-
-.carousel-card-group {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
-.carousel-card {
-  min-height: 15vh;
-  max-width: 30%;
-  flex: 1 1 30%;
-  border: 1px solid red !important;
-  border-radius: 0px;
-}
-
-/* header */
-
-.fondo {
-  min-height: 50vh;
-  background-image: url("/img/responsive.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}
-
-.header-title {
-  text-align: start;
-}
-
-.header-title h1 {
-  color: white;
-}
-
-.header-title h5 {
-  color: grey;
-}
+/* fin section discriminacion-tiempos */

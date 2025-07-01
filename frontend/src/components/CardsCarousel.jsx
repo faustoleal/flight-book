@@ -14,20 +14,46 @@ import { useEffect } from "react";
 
 const CARDS = [
   [
-    { icon: <Flight />, subtitle: "Horas totales", key: "total_horas" },
-    { icon: <Sunny />, subtitle: "Horas diurnas", key: "total_dia" },
-    { icon: <Bedtime />, subtitle: "Horas nocturnas", key: "total_noche" },
+    {
+      icon: <Flight sx={{ fontSize: "3.25rem" }} />,
+      subtitle: "Horas totales",
+      key: "total_horas",
+    },
+    {
+      icon: <Sunny sx={{ fontSize: "3.25rem" }} />,
+      subtitle: "Horas diurnas",
+      key: "total_dia",
+    },
+    {
+      icon: <Bedtime sx={{ fontSize: "3.25rem" }} />,
+      subtitle: "Horas nocturnas",
+      key: "total_noche",
+    },
   ],
   [
     {
-      icon: <SportsEsports />,
+      icon: <SportsEsports sx={{ fontSize: "3.25rem" }} />,
       subtitle: "Piloto al mando",
       key: "total_alMando",
     },
-    { icon: <Home />, subtitle: "Vuelo local", key: "total_local" },
-    { icon: <Map />, subtitle: "En travesia", key: "total_travesia" },
+    {
+      icon: <Home sx={{ fontSize: "3.25rem" }} />,
+      subtitle: "Vuelo local",
+      key: "total_local",
+    },
+    {
+      icon: <Map sx={{ fontSize: "3.25rem" }} />,
+      subtitle: "En travesia",
+      key: "total_travesia",
+    },
   ],
-  [{ icon: <FlightLand />, subtitle: "Aterrizajes", key: "total_aterrizajes" }],
+  [
+    {
+      icon: <FlightLand sx={{ fontSize: "3.25rem" }} />,
+      subtitle: "Aterrizajes",
+      key: "total_aterrizajes",
+    },
+  ],
 ];
 
 const CardsCarousel = () => {
@@ -47,13 +73,19 @@ const CardsCarousel = () => {
           <CardGroup className="carousel-card-group">
             {group.map((card, i) => (
               <Card className="carousel-card" key={i}>
-                <Card.Body>
+                <Card.Body className="carousel-card-body">
                   <Card.Title>{card.icon}</Card.Title>
-                  <Card.Subtitle>{card.subtitle}</Card.Subtitle>
+                  <Card.Subtitle style={{ fontSize: "1.25rem" }}>
+                    {card.subtitle}
+                  </Card.Subtitle>
                   {card.key === "total_aterrizajes" ? (
-                    <Card.Text>{totales[card.key]}</Card.Text>
+                    <Card.Text style={{ fontSize: "1rem" }}>
+                      {totales[card.key]}
+                    </Card.Text>
                   ) : (
-                    <Card.Text>{`${totales[card.key]} hrs`}</Card.Text>
+                    <Card.Text style={{ fontSize: "1rem" }}>{`${
+                      totales[card.key]
+                    } hrs`}</Card.Text>
                   )}
                 </Card.Body>
               </Card>
