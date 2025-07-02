@@ -1,6 +1,6 @@
 import { Form, Button, FloatingLabel } from "react-bootstrap";
 import { useDispatch } from "react-redux";
-import { createPiloto } from "../reducers/pilotosReducer";
+import { createPiloto } from "../../reducers/pilotosReducer";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 

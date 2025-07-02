@@ -2,11 +2,13 @@ import { Navbar, Nav } from "react-bootstrap";
 
 const NavigationBar = () => {
   return (
-    <Navbar expand="sm" className="p-4 justify-content-between">
-      <Navbar.Brand href="/">FlightBook</Navbar.Brand>
+    <Navbar expand="sm" className="p-4 justify-content-between navigationbar">
+      <Navbar.Brand href="/" style={{ color: "#7efff9" }}>
+        FlightBook
+      </Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav" className="flex-grow-0">
-        <Nav>
+        <Nav style={{ color: "#515151" }}>
           <Nav.Link href="/">Inicio</Nav.Link>
           <Nav.Link href="/libro-vuelo">Libro</Nav.Link>
           <Nav.Link href="/libro-vuelo/agregar-hora">Agregar Hora</Nav.Link>

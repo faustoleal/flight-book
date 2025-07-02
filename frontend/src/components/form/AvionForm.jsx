@@ -1,7 +1,7 @@
 import { Form, Button, FloatingLabel, Modal } from "react-bootstrap";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { createAvion } from "../reducers/avionesReducer";
+import { createAvion } from "../../reducers/avionesReducer";
 
 const AvionForm = ({ show, setShow }) => {
   const [matricula, setMatricula] = useState("");

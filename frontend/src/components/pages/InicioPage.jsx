@@ -1,11 +1,12 @@
-import NavigationBar from "./NavigationBar";
-import Footer from "./Footer";
-import CardsCarousel from "./CardsCarousel";
-import Header from "./Header";
+import Footer from "../layout/Footer";
+import Header from "../layout/Header";
 import { useDispatch, useSelector } from "react-redux";
-import { initializePiloto } from "../reducers/pilotosReducer";
+import { initializePiloto } from "../../reducers/pilotosReducer";
 import { useEffect } from "react";
-import LinksCards from "./LinksCards";
+import { lazy, Suspense } from "react";
+import LinksCards from "../layout/LinksCards";
+
+const CardsCarousel = lazy(() => import("../layout/CardsCarousel"));
 
 const InicioPage = () => {
   const dispatch = useDispatch();
@@ -39,7 +40,9 @@ const InicioPage = () => {
               los hiciste, el tipo, el rol que desempenaste y mas
             </h5>
           </div>
-          <CardsCarousel />
+          <Suspense fallback={<div>...Cargando</div>}>
+            <CardsCarousel />
+          </Suspense>
         </section>
       </main>
       <Footer />

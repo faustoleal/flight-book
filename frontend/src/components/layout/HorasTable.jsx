@@ -2,7 +2,7 @@ import { Table } from "react-bootstrap";
 import HorasItem from "./HorasItem";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { initializeHoras } from "../reducers/horasReducer";
+import { initializeHoras } from "../../reducers/horasReducer";
 
 const HorasTable = () => {
   const horas = useSelector((state) => state.horas);
@@ -16,7 +16,7 @@ const HorasTable = () => {
   if (!horas) return <div>Cargando...</div>;
 
   return (
-    <Table striped bordered responsive>
+    <Table striped bordered responsive className="my-4 mx-2">
       <thead>
         <tr>
           <th rowSpan={4}>Fecha</th>

@@ -1,7 +1,7 @@
 import { Form, Button, FloatingLabel } from "react-bootstrap";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { loginPiloto } from "../reducers/loginReducer";
+import { loginPiloto } from "../../reducers/loginReducer";
 import { Link } from "react-router-dom";
 
 const LoginForm = () => {

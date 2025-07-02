@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 const LINKSCARDS = [
   {
-    img: "public/img/responsive.jpg",
+    img: "/img/responsive.jpg",
     title: "Tu libro de vuelo",
     description: "Aqui puedes encontrar tu libro totalmente detallado ",
     link: "/libro-vuelo",
   },
   {
-    img: "public/img/responsive.jpg",
+    img: "/img/responsive.jpg",
     title: "Anotar hora",
     description: "Formulario para registrar un nuevo vuelo",
     link: "/libro-vuelo/agregar-hora",
@@ -23,7 +23,7 @@ const LinksCards = () => {
         <Link className="link-card" to={card.link}>
           <Card key={i}>
             <Card.Img variant="top" src={card.img} />
-            <Card.Body className="text-start">
+            <Card.Body className="text-start link-card-body">
               <Card.Title>{card.title}</Card.Title>
               <Card.Text>{card.description}</Card.Text>
             </Card.Body>

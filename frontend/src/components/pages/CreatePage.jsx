@@ -1,4 +1,4 @@
-import CreateAccount from "./CreateAccount";
+import CreateAccount from "../form/CreateAccount";
 
 const CreatePage = () => {
   return (

@@ -9,7 +9,7 @@ import {
   SportsEsports,
 } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
-import { initializeTotales } from "../reducers/totalesReducer";
+import { initializeTotales } from "../../reducers/totalesReducer";
 import { useEffect } from "react";
 
 const CARDS = [
