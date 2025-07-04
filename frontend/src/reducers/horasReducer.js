@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import horasService from "../services/horas";
+import { setNotification } from "./notificationReducer";
 
 const horasSlice = createSlice({
   name: "horas",
@@ -29,8 +30,13 @@ export const initializeHoras = () => {
 
 export const createHoras = (hora) => {
   return async (dispatch) => {
-    const newHora = await horasService.create(hora);
-    dispatch(appendHoras(newHora));
+    try {
+      const newHora = await horasService.create(hora);
+      dispatch(setNotification("Hora agregada correctamente", "success"));
+      dispatch(appendHoras(newHora));
+    } catch (error) {
+      dispatch(setNotification(`${error.response.data.error}`, "danger"));
+    }
   };
 };
 

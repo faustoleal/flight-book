@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import pilotosService from "../services/pilotos";
+import { setNotification } from "./notificationReducer";
 
 const pilotosSlice = createSlice({
   name: "pilotos",
@@ -36,8 +37,13 @@ export const initializePiloto = () => {
 
 export const createPiloto = (piloto) => {
   return async (dispatch) => {
-    const newPiloto = await pilotosService.create(piloto);
-    dispatch(appendPiloto(newPiloto));
+    try {
+      const newPiloto = await pilotosService.create(piloto);
+      dispatch(appendPiloto(newPiloto));
+      dispatch(setNotification("Usuario creado correctamente", "success"));
+    } catch (error) {
+      dispatch(setNotification(`${error.response.data.error}`, "danger"));
+    }
   };
 };
 

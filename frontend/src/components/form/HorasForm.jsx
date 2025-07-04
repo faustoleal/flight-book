@@ -79,7 +79,6 @@ const HorasForm = () => {
     };
 
     dispatch(createHoras(newHora));
-    console.log(newHora);
     dia.onReset();
     horaSalida.onReset();
     desde.onReset();
@@ -103,7 +102,7 @@ const HorasForm = () => {
 
   return (
     <>
-      <div className="horas">
+      <div className="horas mt-3">
         <div className="form">
           <h2>Nueva Hora</h2>
           <Form className="w-1'0''0' p-2" onSubmit={handleCreateHora}>
@@ -205,7 +204,7 @@ const HorasForm = () => {
               </Form.Group>
             </section>
             <section className="discriminacion-tiempos">
-              <h2>Discriminacion Tiempos</h2>
+              <h2 className="w-100">Discriminacion Tiempos</h2>
               <DiscriminacionInput
                 label="instructor de vuelo"
                 {...instructorDeVuelo}
@@ -225,7 +224,7 @@ const HorasForm = () => {
               />
               <DiscriminacionInput label="capota" {...capota} />
             </section>
-            <Button type="submit">create</Button>
+            <Button type="submit">Agregar Hora</Button>
           </Form>
         </div>
       </div>

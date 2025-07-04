@@ -1,4 +1,5 @@
 import LoginForm from "../form/LoginForm";
+import Notification from "../layout/Notification";
 
 const LoginPage = () => {
   return (
@@ -8,6 +9,7 @@ const LoginPage = () => {
         <h3>Inicia sesion para comenzar anotar tus horas de vuelos</h3>
       </section>
       <section className="log-form">
+        <Notification />
         <LoginForm />
       </section>
     </main>

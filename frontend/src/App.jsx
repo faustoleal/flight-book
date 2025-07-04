@@ -1,5 +1,4 @@
 import AppRoutes from "./AppRoutes";
-import Notification from "./components/layout/Notification";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { initializeLogin } from "./reducers/loginReducer";
@@ -12,12 +11,7 @@ function App() {
     dispatch(initializeLogin());
   }, [dispatch]);
 
-  return (
-    <>
-      <Notification />
-      <AppRoutes />;
-    </>
-  );
+  return <AppRoutes />;
 }
 
 export default App;

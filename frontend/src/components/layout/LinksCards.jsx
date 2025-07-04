@@ -20,8 +20,8 @@ const LinksCards = () => {
   return (
     <>
       {LINKSCARDS.map((card, i) => (
-        <Link className="link-card" to={card.link}>
-          <Card key={i}>
+        <Link className="link-card" to={card.link} key={i}>
+          <Card>
             <Card.Img variant="top" src={card.img} />
             <Card.Body className="text-start link-card-body">
               <Card.Title>{card.title}</Card.Title>

@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import loginService from "../services/login";
 import horasService from "../services/horas";
+import { setNotification } from "./notificationReducer";
 
 const loginSlice = createSlice({
   name: "login",
@@ -33,10 +34,14 @@ export const initializeLogin = () => {
 
 export const loginPiloto = (data) => {
   return async (dispatch) => {
-    const piloto = await loginService.login(data);
-    window.localStorage.setItem("loggedPiloto", JSON.stringify(piloto));
-    horasService.setToken(piloto.token);
-    dispatch(login(piloto));
+    try {
+      const piloto = await loginService.login(data);
+      window.localStorage.setItem("loggedPiloto", JSON.stringify(piloto));
+      horasService.setToken(piloto.token);
+      dispatch(login(piloto));
+    } catch (error) {
+      dispatch(setNotification(`${error.response.data.error}`, "danger"));
+    }
   };
 };
 

@@ -334,12 +334,8 @@
   align-items: center;
 }
 
-& section {
+.horas section {
   padding: 10px;
-}
-
-& h2 {
-  margin: 0 auto;
 }
 
 /* section itinerario */
@@ -374,12 +370,12 @@
   justify-content: space-between;
 }
 
-& .utils-form-group {
+.utils .utils-form-group {
   flex-basis: 48%;
 }
 
-@media (width < 768px) {
-  .utils-form-group {
+@media (width < 675px) {
+  .utils .utils-form-group {
     flex-basis: 100%;
   }
 }
@@ -426,24 +422,24 @@
   flex-wrap: wrap;
 }
 
-& h2 {
+.discriminacion-tiempos > h2 {
   margin: 20px;
 }
 
-& .input-group {
+.input-group {
   margin: 0px 5px;
   flex-basis: 32%;
   width: auto;
 }
 
 @media (width < 900px) {
-  & .input-group {
+  .input-group {
     flex-basis: 48%;
   }
 }
 
 @media (width < 620px) {
-  & .input-group {
+  .input-group {
     flex-basis: 100%;
   }
 }

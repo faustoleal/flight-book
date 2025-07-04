@@ -2,7 +2,6 @@ import { Form, Button, FloatingLabel } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import { createPiloto } from "../../reducers/pilotosReducer";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 const CreateAccount = () => {
   const [name, setName] = useState("");
@@ -10,7 +9,6 @@ const CreateAccount = () => {
   const [password, setPassword] = useState("");
 
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const handleCreatePiloto = (e) => {
     e.preventDefault();
@@ -18,7 +16,6 @@ const CreateAccount = () => {
     setName("");
     setPassword("");
     setUsuario("");
-    navigate("/login");
   };
 
   return (

@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import avionesService from "../services/aviones";
+import { setNotification } from "./notificationReducer";
 
 const avionesSlice = createSlice({
   name: "aviones",
@@ -23,8 +24,15 @@ export const initializeAviones = () => {
 
 export const createAvion = (avion) => {
   return async (dispatch) => {
-    const newAvion = await avionesService.create(avion);
-    dispatch(appendAvion(newAvion));
+    try {
+      const newAvion = await avionesService.create(avion);
+      dispatch(appendAvion(newAvion));
+      dispatch(
+        setNotification(`se agrego el avion ${newAvion.matricula}`, "success")
+      );
+    } catch (error) {
+      dispatch(setNotification(`${error.response.data.error}`, "danger"));
+    }
   };
 };
 
