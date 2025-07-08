@@ -23,8 +23,8 @@ pilotosRouter.get("/:id", async (req, res) => {
 pilotosRouter.post("/", async (req, res, next) => {
   const { name, usuario, password } = req.body;
 
-  if (!password) {
-    res.status(400).json({ error: "password is require" });
+  if ((!password, !name, !usuario)) {
+    res.status(400).json({ error: "el formulario no esta completo" });
   }
 
   const saltRounds = 10;
@@ -37,7 +37,7 @@ pilotosRouter.post("/", async (req, res, next) => {
       passwordHash,
     });
 
-    res.json("usuario creado correctamente");
+    res.status(201).json(piloto);
   } catch (error) {
     next(error);
   }

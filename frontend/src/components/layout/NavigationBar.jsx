@@ -2,7 +2,11 @@ import { Navbar, Nav } from "react-bootstrap";
 
 const NavigationBar = () => {
   return (
-    <Navbar expand="sm" className="p-4 justify-content-between navigationbar">
+    <Navbar
+      expand="sm"
+      className="p-4 justify-content-between navigationbar"
+      style={{ backgroundColor: "#fff" }}
+    >
       <Navbar.Brand href="/" style={{ color: "#7efff9" }}>
         FlightBook
       </Navbar.Brand>

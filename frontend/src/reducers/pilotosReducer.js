@@ -4,7 +4,7 @@ import { setNotification } from "./notificationReducer";
 
 const pilotosSlice = createSlice({
   name: "pilotos",
-  initialState: null,
+  initialState: [],
   reducers: {
     setPiloto(state, action) {
       return action.payload;

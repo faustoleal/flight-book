@@ -1,7 +1,8 @@
 import { Form, Button, FloatingLabel } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { createPiloto } from "../../reducers/pilotosReducer";
-import { useState } from "react";
 
 const CreateAccount = () => {
   const [name, setName] = useState("");
@@ -55,9 +56,14 @@ const CreateAccount = () => {
             />
           </FloatingLabel>
         </Form.Group>
-        <Button className="p-2" variant="primary" type="submit">
-          create
-        </Button>
+        <div className="buttons p-2 d-flex flex-wrap">
+          <Link className="w-100" to="/login">
+            Iniciar sesion
+          </Link>
+          <Button className="p-2 my-2 w-100" type="submit">
+            Crear cuenta
+          </Button>
+        </div>
       </Form>
     </div>
   );

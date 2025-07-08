@@ -78,22 +78,26 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  background: linear-gradient(
-    0deg,
-    rgba(0, 82, 140, 1) 0%,
-    rgba(0, 251, 255, 1) 100%
-  );
+  background-color: #dee2e6;
 }
 
 .log-title {
   flex-basis: 60%;
-  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: start;
 }
 
-.log-title > h1 & h3 {
-  color: #fff;
+.log-title h1,
+.log-title h3 {
+  background: linear-gradient(90deg, #04f6fa, #7909f0);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
   padding: 5px;
-  margin: 0.5rem;
+  margin: 0 5px;
+  text-align: start;
 }
 
 .log-form {
@@ -104,6 +108,7 @@
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  padding: 5px;
 }
 
 /* Login Form && Create Account Form */
@@ -111,6 +116,9 @@
 .form-p {
   width: 100%;
   background-color: white;
+  border: 1px solid #dee2e6;
+  border-radius: 10px;
+  margin: 0 5px;
 }
 
 .pilotos-form {
@@ -126,19 +134,21 @@
 }
 
 @media (width < 515px) {
-  .log-page {
-    align-items: stretch;
-  }
   .log-title {
     flex-basis: 100%;
-    align-self: center;
+    height: 50vh;
   }
 
   .log-form {
-    min-height: auto;
-    flex-basis: 95%;
+    min-height: 50vh;
+    height: auto;
+    flex-basis: 100%;
     margin: 0 auto;
     border-radius: 3px;
+  }
+
+  .form-p {
+    height: inherit;
   }
 }
 
