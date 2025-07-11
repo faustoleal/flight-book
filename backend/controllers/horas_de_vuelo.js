@@ -9,10 +9,20 @@ horasDeVueloRouter.get("/", async (req, res) => {
 });
 
 horasDeVueloRouter.get("/:id", async (req, res) => {
-  const horas = await HorasDeVuelo.findAll({
+  const pageAsNumber = Number.parseInt(req.query.page);
+
+  let page = 0;
+  if (!Number.isNaN(pageAsNumber) && pageAsNumber > 0) {
+    page = pageAsNumber;
+  }
+
+  const horas = await HorasDeVuelo.findAndCountAll({
     where: {
       pilotoId: req.params.id,
     },
+    limit: 15,
+    offset: page * 15,
+    order: [["dia", "ASC"]],
     exclude: ["avionMatricula"],
     include: [
       {
@@ -26,7 +36,10 @@ horasDeVueloRouter.get("/:id", async (req, res) => {
     ],
   });
 
-  res.json(horas);
+  res.send({
+    content: horas.rows,
+    totalPages: Math.ceil(horas.count / 15),
+  });
 });
 
 horasDeVueloRouter.get("/:id/totales", async (req, res) => {

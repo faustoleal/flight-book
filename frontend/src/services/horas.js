@@ -8,8 +8,10 @@ const setToken = (newToken) => {
   token = `Bearer ${newToken}`;
 };
 
-const getAll = async (id) => {
-  const response = await axios.get(`${baseUrl}/${id}`);
+const getAll = async (id, page) => {
+  const response = await axios.get(
+    `${baseUrl}/${id}?limit=15&page=${page - 1}`
+  );
   return response.data;
 };
 

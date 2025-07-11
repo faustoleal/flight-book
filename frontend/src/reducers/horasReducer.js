@@ -15,12 +15,12 @@ const horasSlice = createSlice({
   },
 });
 
-export const initializeHoras = () => {
+export const initializeHoras = (page) => {
   return async (dispatch) => {
     const loggedPilotoJSON = window.localStorage.getItem("loggedPiloto");
     if (loggedPilotoJSON) {
       const piloto = JSON.parse(loggedPilotoJSON);
-      const horas = await horasService.getAll(piloto.id);
+      const horas = await horasService.getAll(piloto.id, page);
       dispatch(setHoras(horas));
     } else {
       console.log({ error: "not pilot logged" });
