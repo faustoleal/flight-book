@@ -1,5 +1,5 @@
-import { Link } from "react-router-dom";
 import { GitHub, Email, LinkedIn } from "@mui/icons-material";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (

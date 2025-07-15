@@ -1,4 +1,3 @@
-import { Carousel, Card, CardGroup } from "react-bootstrap";
 import {
   Sunny,
   Bedtime,
@@ -8,9 +7,10 @@ import {
   Flight,
   SportsEsports,
 } from "@mui/icons-material";
+import { Carousel, Card, CardGroup } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
-import { initializeTotales } from "../../reducers/totalesReducer";
 import { useEffect } from "react";
+import { initializeTotales } from "../../reducers/totalesReducer";
 
 const CARDS = [
   [
@@ -80,12 +80,14 @@ const CardsCarousel = () => {
                   </Card.Subtitle>
                   {card.key === "total_aterrizajes" ? (
                     <Card.Text style={{ fontSize: "1rem" }}>
-                      {totales[card.key]}
+                      {totales[card.key] === null ? "0" : totales[card.key]}
                     </Card.Text>
                   ) : (
-                    <Card.Text style={{ fontSize: "1rem" }}>{`${
-                      totales[card.key]
-                    } hrs`}</Card.Text>
+                    <Card.Text style={{ fontSize: "1rem" }}>
+                      {totales[card.key] === null
+                        ? "0 hrs"
+                        : `${totales[card.key]} hrs`}
+                    </Card.Text>
                   )}
                 </Card.Body>
               </Card>

@@ -1,10 +1,10 @@
-import Footer from "../layout/Footer";
-import Header from "../layout/Header";
-import { useDispatch, useSelector } from "react-redux";
-import { initializePiloto } from "../../reducers/pilotosReducer";
-import { useEffect } from "react";
 import { lazy, Suspense } from "react";
+import Header from "../layout/Header";
 import LinksCards from "../layout/LinksCards";
+import Footer from "../layout/Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { initializePiloto } from "../../reducers/pilotosReducer";
 
 const CardsCarousel = lazy(() => import("../layout/CardsCarousel"));
 

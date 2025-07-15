@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 
 const LINKSCARDS = [
   {
-    img: "/img/responsive.jpg",
+    img: "/img/responsive.webp",
     title: "Tu libro de vuelo",
     description: "Aqui puedes encontrar tu libro totalmente detallado ",
     link: "/libro-vuelo",
   },
   {
-    img: "/img/responsive.jpg",
+    img: "/img/responsive.webp",
     title: "Anotar hora",
     description: "Formulario para registrar un nuevo vuelo",
     link: "/libro-vuelo/agregar-hora",

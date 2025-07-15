@@ -1,5 +1,5 @@
-import { Table } from "react-bootstrap";
 import HorasItem from "./HorasItem";
+import { Table } from "react-bootstrap";
 
 const HorasTable = ({ horas }) => {
   return (
