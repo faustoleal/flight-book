@@ -75,7 +75,7 @@ HorasDeVuelo.init(
       },
     },
     finalidad: {
-      type: DataTypes.ENUM("ENT", "INST", "READP"),
+      type: DataTypes.ENUM("ENT", "INST", "READP", "EXA"),
       allowNull: false,
       validate: {
         notNull: {
