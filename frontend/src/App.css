@@ -230,6 +230,7 @@
 .link-card img {
   max-height: 240px;
   object-fit: cover;
+  mask-image: linear-gradient(black 90%, transparent);
 }
 
 @media (width < 575px) {
