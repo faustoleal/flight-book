@@ -94,35 +94,35 @@ HorasDeVuelo.init(
       },
     },
     localDiaP: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL,
       defaultValue: 0,
     },
     localDiaC: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL,
       defaultValue: 0,
     },
     localNocheP: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL,
       defaultValue: 0,
     },
     localNocheC: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL,
       defaultValue: 0,
     },
     travesiaDiaP: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL,
       defaultValue: 0,
     },
     travesiaDiaC: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL,
       defaultValue: 0,
     },
     travesiaNocheP: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL,
       defaultValue: 0,
     },
     travesiaNocheC: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL,
       defaultValue: 0,
     },
     aterrizajes: {
@@ -135,35 +135,35 @@ HorasDeVuelo.init(
       },
     },
     instructorDeVuelo: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL,
       defaultValue: 0,
     },
     reactor: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL,
       defaultValue: 0,
     },
     multiMotor: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL,
       defaultValue: 0,
     },
     turboHelice: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL,
       defaultValue: 0,
     },
     aeroaplicador: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL,
       defaultValue: 0,
     },
     instrumentosRealP: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL,
       defaultValue: 0,
     },
     instrumentosRealC: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL,
       defaultValue: 0,
     },
     capota: {
-      type: DataTypes.FLOAT,
+      type: DataTypes.DECIMAL,
       defaultValue: 0,
     },
   },

@@ -145,6 +145,7 @@ const HorasForm = () => {
                   <option value="ENT">ENT</option>
                   <option value="INST">INST</option>
                   <option value="READP">READP</option>
+                  <option value="EXA">EXA</option>
                 </Form.Select>
               </Form.Group>
               <Form.Group className="mb-3 utils-form-group" controlId="avion">

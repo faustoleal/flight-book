@@ -77,19 +77,14 @@ horasDeVueloRouter.get("/:id/totales", async (req, res) => {
           "total_local",
         ],
         [
-          sequelize.fn(
-            "SUM",
-            sequelize.literal(
-              "travesia_dia_p + travesia_noche_p + travesia_dia_c + travesia_noche_c"
-            )
-          ),
+          sequelize.fn("SUM", sequelize.literal("travesia_dia_p")),
           "total_travesia",
         ],
         [
           sequelize.fn(
             "SUM",
             sequelize.literal(
-              "local_dia_p + local_noche_p  + travesia_dia_p + travesia_noche_p "
+              "local_dia_p + local_noche_p  + travesia_dia_p + travesia_noche_p"
             )
           ),
           "total_alMando",

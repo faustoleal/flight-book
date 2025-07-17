@@ -15,6 +15,7 @@ const PaginationComponent = ({ handlePageChange, totalPages, currentPage }) => {
         </Pagination.Item>
       );
     }
+    return arr;
   }, [totalPages, handlePageChange, currentPage]);
 
   return <Pagination className="justify-content-center">{pages}</Pagination>;
